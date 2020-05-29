@@ -21,6 +21,11 @@ class User: Codable, CustomStringConvertible{
     var isAdmin: Bool = false
     var token: String = "nil"
     
+    init(id: Int) {
+        self.id = id
+        self.email = "nil"
+    }
+    
     init(id: Int, firstname: String, lastname: String, email: String, password: String, birthday: Date, /*address: String, addressWork: String, survey: String, */isAdmin: Bool) {
         self.id = id
         self.lastname = lastname
@@ -46,6 +51,13 @@ class User: Codable, CustomStringConvertible{
         self.isAdmin = isAdmin
     }
     
+    init(id: Int, firstname: String, lastname: String, email: String, token: String){
+        self.firstname = firstname
+        self.lastname = lastname
+        self.email = email
+        self.token = token
+    }
+    
     init(email: String, password: String){
         self.email = email
         self.password = password
@@ -60,6 +72,6 @@ class User: Codable, CustomStringConvertible{
     }
     
     var description: String {
-        return "{\(self.token) - \(String(describing: self.firstname)) - \(self.lastname ?? "nil") - \(self.email) - \(self.password ?? "nil") - \(self.isAdmin)}"
+        return "{\(self.firstname ?? "nil") - \(self.lastname ?? "nil") - \(self.email) - \(self.password ?? "nil") - \(self.isAdmin) - \(self.token) }"
     }
 }

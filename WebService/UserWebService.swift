@@ -90,7 +90,6 @@ class UserWebService {
                 }
             }
             completion(user)
-
         }
         task.resume()
     }

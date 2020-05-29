@@ -13,8 +13,20 @@ class testViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("HERE1")
-        uws.login(user: User(email: "blackack91@gmail.com", password: "password")) { (result) in
-            print(result)
+        var user: User = User(id: 0, firstname: "Julien", lastname: "Guillan", email: "blackack91@gmail.com", token: "nil")
+        uws.login(user: User(email: user.email, password: "password")) { (result) in
+            if(result.getToken() == "nil"){
+                print("ERROR CREDENTIALS")
+            } else {
+                user.setToken(token: result.getToken())
+                print("WELCOME BACK")
+                let db:DBHelper = DBHelper()
+                print("TEST INSERT DB")
+                db.insert(id: 0, firstname: user.firstname!, lastname: user.lastname!, email: user.email, token: user.token)
+                print("TEST SELECT DB")
+                let result = db.selectWhereId(id: 1)
+                print(result)
+            }
         }
         // Do any additional setup after loading the view.
     }
