@@ -12,8 +12,10 @@ class testViewController: UIViewController {
     let uws: UserWebService = UserWebService()
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("HERE")
-        testUser()
+        print("HERE1")
+        uws.login(user: User(email: "blackack91@gmail.com", password: "password")) { (result) in
+            print(result)
+        }
         // Do any additional setup after loading the view.
     }
     

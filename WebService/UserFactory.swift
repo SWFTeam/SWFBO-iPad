@@ -14,7 +14,7 @@ class UserFactory {
         
         guard let firstname = dictionnary["firstname"] as? String,
             let lastname = dictionnary["lastname"] as? String,
-            let email = dictionnary["email"] as? String,
+            let email = dictionnary["email_address"] as? String,
             let password = dictionnary["password"] as? String,
             let birthday = dictionnary["birthday"] as? Date else {
                 return nil
