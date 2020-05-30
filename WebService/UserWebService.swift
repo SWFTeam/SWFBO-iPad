@@ -93,4 +93,41 @@ class UserWebService {
         }
         task.resume()
     }
+    
+    func getAdditionnalData(user: User, completion: @escaping(User) -> Void) -> Void {
+        guard let userURL = URL(string: "http://localhost:3000/bo/user") else {
+            return;
+        }
+        var request = URLRequest(url: userURL)
+        request.addValue(user.getToken(), forHTTPHeaderField: "Authorization")
+        let json: [String: Any] = [ "email": user.email ]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        request.httpBody = jsonData
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
+        let task = URLSession.shared.dataTask(with: request){data, response, error in
+            if let error = error {
+                print ("error: \(error)")
+                return
+            }
+            if let httpRes = response as? HTTPURLResponse {
+                if httpRes.statusCode == 200 {
+                    let result = try? JSONSerialization.jsonObject(with: data!, options: [])
+                    if let dictionary = result as? [String: Any] {
+                        if let firstname = dictionary["firstname"] as? String {
+                                user.firstname = firstname
+                            }
+                        if let lastname = dictionary["lastname"] as? String {
+                                user.lastname = lastname
+                            }
+                        if let access_bo = dictionary["isAdmin"] as? Bool {
+                                user.isAdmin = access_bo
+                            }
+                    }
+                }
+            }
+            completion(user)
+        }
+        task.resume()
+    }
 }

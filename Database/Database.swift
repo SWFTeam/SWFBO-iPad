@@ -19,7 +19,7 @@ class DBHelper
         createTable()
     }
 
-    let dbPath: String = "partyRule.sqlite"
+    let dbPath: String = "SWFBO.sqlite"
     var db:OpaquePointer?
 
     func openDatabase() -> OpaquePointer?
@@ -145,7 +145,11 @@ class DBHelper
                 let lastname = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
                 let email = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
                 let token = String(describing: String(cString: sqlite3_column_text(queryStatement, 4)))
-                user = User(id: Int(id), firstname: firstname, lastname: lastname, email: email, token: token)
+                if(email != nil){
+                    user = User(id: Int(id), firstname: firstname, lastname: lastname, email: email, token: token)
+                } else {
+                    user = User(id: Int(id), firstname: "nil", lastname: "nil", email: "nil", token: "nil")
+                }
             }
         } else {
             print("SELECT statement could not be prepared")

@@ -8,8 +8,13 @@
 
 import UIKit
 
-class testViewController: UIViewController {
+class ViewController: UIViewController {
     let uws: UserWebService = UserWebService()
+    
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+       }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("HERE1")
