@@ -17,7 +17,8 @@ class AddressFactory {
             let street = dictionnary["street"] as? String,
             let zipCode = dictionnary["zipCode"] as? Int,
             let nbHouse = dictionnary["nbHouse"] as? Int,
-            let complement = dictionnary["complement"] as? String else {
+            let complement = dictionnary["complement"] as? String,
+            let created_at = dictionnary["created_at"] as? String else {
                 return nil
         }
         

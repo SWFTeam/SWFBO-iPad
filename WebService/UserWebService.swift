@@ -38,11 +38,13 @@ class UserWebService {
         task.resume()
     }
     
-    func getAllUsers(completion: @escaping ([User]) -> Void) -> Void {
+    func getAllUsers(user: User, completion: @escaping ([User]) -> Void) -> Void {
         guard let usersURL = URL(string: "http://localhost:3000/bo/users") else {
             return;
         }
-        let task = URLSession.shared.dataTask(with: usersURL, completionHandler: { (data: Data?, res, err) in
+        var request: URLRequest = URLRequest(url: usersURL)
+        request.addValue(user.getToken(), forHTTPHeaderField: "Authorization")
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, res, err) in
             guard let bytes = data,
                   err == nil,
                   let json = try? JSONSerialization.jsonObject(with: bytes, options: .allowFragments) as? [Any] else {
@@ -51,14 +53,13 @@ class UserWebService {
                     }
                 return
             }
-            print(json)
+
             let users = json.compactMap { (obj) -> User? in
                 guard let dict = obj as? [String: Any] else {
                     return nil
                 }
                 return UserFactory.userFrom(dictionnary: dict)
             }
-            print(users)
             DispatchQueue.main.sync {
                 completion(users)
             }
