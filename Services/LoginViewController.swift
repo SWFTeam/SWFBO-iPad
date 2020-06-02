@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
         if(email == "" || password == ""){
 
         } else {
-            var user = User(email: email!, password: password!)
+            let user = User(email: email!, password: password!)
             self.userWebService.login(user: user) { (userRes) in
                 if(userRes.token != "nil"){
                     let db:DBHelper = DBHelper()

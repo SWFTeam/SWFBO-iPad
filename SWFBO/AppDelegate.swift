@@ -12,15 +12,19 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var userWebService: UserWebService!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let w = UIWindow(frame: UIScreen.main.bounds)
-        let db:DBHelper = DBHelper()
-        let user = db.selectWhereId(id: 0)
-        print(user)
+        let db: DBHelper = DBHelper()
+        let user = db.selectWhereId(id: 1)
         if(user.email != "nil"){
-            w.rootViewController =  UINavigationController(rootViewController: HomeViewController())
+            self.userWebService.login(user: user) { (userLogged) in
+                user.setToken(token: userLogged.token)
+                db.insert(id: 1, firstname: user.firstname!, lastname: user.lastname!, email: user.email, token: userLogged.token)
+                w.rootViewController =  UINavigationController(rootViewController: HomeViewController())
+            }
         } else {
             w.rootViewController =  UINavigationController(rootViewController: LoginViewController())
         }
@@ -28,7 +32,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = w
         return true
     }
-
-
 }
 

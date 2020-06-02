@@ -15,7 +15,6 @@ class DBHelper
     init()
     {
         db = openDatabase()
-        dropTable(tableName: "user")
         createTable()
     }
 
@@ -27,7 +26,7 @@ class DBHelper
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent(dbPath)
         var db: OpaquePointer? = nil
-        if sqlite3_open(fileURL.path, &db) != SQLITE_OK
+        if sqlite3_open_v2(fileURL.path, &db, SQLITE_OPEN_READWRITE, nil) != SQLITE_OK
         {
             print("error opening database")
             return nil
@@ -76,9 +75,11 @@ class DBHelper
     */
     func insert(id:Int, firstname: String, lastname: String, email: String, token: String)
     {
+        deleteByID(id: 1)
         let insertStatementString = "INSERT INTO user (Id, firstname, lastname, email, token) VALUES (NULL, ?, ?, ?, ?);"
         var insertStatement: OpaquePointer? = nil
-        if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
+        let prepareState = sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil)
+        if  prepareState == SQLITE_OK {
             sqlite3_bind_text(insertStatement, 1, (firstname as NSString).utf8String, -1, nil)
             sqlite3_bind_text(insertStatement, 2, (lastname as NSString).utf8String, -1, nil)
             sqlite3_bind_text(insertStatement, 3, (email as NSString).utf8String, -1, nil)
@@ -92,6 +93,7 @@ class DBHelper
             }
         } else {
             print("INSERT statement could not be prepared.")
+            print(String(cString: sqlite3_errmsg(insertStatement)))
         }
         sqlite3_finalize(insertStatement)
     }
@@ -134,7 +136,7 @@ class DBHelper
             if sqlite3_prepare_v2 is different from "SQLITE_OK"
      - Returns: A User table
     */
-    func selectWhereId(id:Int) -> User {
+    func selectWhereId(id: Int) -> User {
         let queryStatementString = "SELECT * FROM user WHERE Id = ? LIMIT 1;"
         var queryStatement: OpaquePointer? = nil
         var user: User = User(id: id)
@@ -168,7 +170,7 @@ class DBHelper
                     if sqlite3_prepare_v2 is different from "SQLITE_OK"
            - Returns: None
     */
-    func deleteByID(id:Int) {
+    func deleteByID(id: Int) {
         let deleteStatementStirng = "DELETE FROM user WHERE Id = ?;"
         var deleteStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, deleteStatementStirng, -1, &deleteStatement, nil) == SQLITE_OK {
@@ -197,6 +199,5 @@ class DBHelper
         }
         return state
     }
-
 }
 

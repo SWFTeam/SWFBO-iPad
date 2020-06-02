@@ -14,7 +14,7 @@ class User: Codable, CustomStringConvertible{
     var lastname: String?
     var email: String
     var password: String?
-    var birthday: Date?
+    var birthday: String?
     /*var address: Address
     var addressWork: Address
     var survey: Survey*/
@@ -26,7 +26,7 @@ class User: Codable, CustomStringConvertible{
         self.email = "nil"
     }
     
-    init(id: Int, firstname: String, lastname: String, email: String, password: String, birthday: Date, /*address: String, addressWork: String, survey: String, */isAdmin: Bool) {
+    init(id: Int, firstname: String, lastname: String, email: String, password: String, birthday: String, /*address: String, addressWork: String, survey: String, */isAdmin: Bool) {
         self.id = id
         self.lastname = lastname
         self.firstname = firstname
@@ -39,7 +39,7 @@ class User: Codable, CustomStringConvertible{
         self.isAdmin = isAdmin
     }
     
-    init(firstname: String, lastname: String, email: String, password: String, birthday: Date, /*address: String, addressWork: String, survey: String, */isAdmin: Bool) {
+    init(firstname: String, lastname: String, email: String, password: String, birthday: String, /*address: String, addressWork: String, survey: String, */isAdmin: Bool) {
         self.lastname = lastname
         self.firstname = firstname
         self.email = email

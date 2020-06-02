@@ -16,7 +16,7 @@ class UserFactory {
             let lastname = dictionnary["lastname"] as? String,
             let email = dictionnary["email_address"] as? String,
             let password = dictionnary["password"] as? String,
-            let birthday = dictionnary["birthday"] as? Date else {
+            let birthday = dictionnary["birthday"] as? String else {
                 return nil
         }
         
