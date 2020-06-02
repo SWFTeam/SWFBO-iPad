@@ -21,7 +21,6 @@ class UserWebService {
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "content-type")
             let task = URLSession.shared.uploadTask(with: request, from: dataToUpload){data, response, error in
-                print(data)
                 if let error = error {
                     print ("error: \(error)")
                     return
@@ -31,7 +30,6 @@ class UserWebService {
                     print(user.description)
                     return
                 }
-                print(response)
                 completion(false)
 
             }

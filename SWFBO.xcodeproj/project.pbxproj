@@ -26,6 +26,12 @@
 		4D381D73248196FB00C9896E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D381D71248196FB00C9896E /* LoginViewController.xib */; };
 		4D381D7624829DF800C9896E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D381D7424829DF800C9896E /* HomeViewController.swift */; };
 		4D381D7724829DF800C9896E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D381D7524829DF800C9896E /* HomeViewController.xib */; };
+		4D79E8662486F26F0012D9AB /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D79E8642486F26F0012D9AB /* ChallengesViewController.swift */; };
+		4D79E8672486F26F0012D9AB /* ChallengesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D79E8652486F26F0012D9AB /* ChallengesViewController.xib */; };
+		4D79E86A2486F2960012D9AB /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D79E8682486F2960012D9AB /* ChallengeTableViewCell.swift */; };
+		4D79E86B2486F2960012D9AB /* ChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D79E8692486F2960012D9AB /* ChallengeTableViewCell.xib */; };
+		4D79E86D2486F2B50012D9AB /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D79E86C2486F2B50012D9AB /* Challenge.swift */; };
+		4D79E8712486F7320012D9AB /* ChallengeWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D79E8702486F7320012D9AB /* ChallengeWebService.swift */; };
 		BBDBB5A624854D1F00D50227 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDBB5A424854D1F00D50227 /* UserTableViewCell.swift */; };
 		BBDBB5A724854D1F00D50227 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDBB5A524854D1F00D50227 /* UserTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -52,6 +58,12 @@
 		4D381D71248196FB00C9896E /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		4D381D7424829DF800C9896E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Services/Home/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		4D381D7524829DF800C9896E /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = Services/Home/HomeViewController.xib; sourceTree = SOURCE_ROOT; };
+		4D79E8642486F26F0012D9AB /* ChallengesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
+		4D79E8652486F26F0012D9AB /* ChallengesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengesViewController.xib; sourceTree = "<group>"; };
+		4D79E8682486F2960012D9AB /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
+		4D79E8692486F2960012D9AB /* ChallengeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTableViewCell.xib; sourceTree = "<group>"; };
+		4D79E86C2486F2B50012D9AB /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		4D79E8702486F7320012D9AB /* ChallengeWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeWebService.swift; sourceTree = "<group>"; };
 		BBDBB5A424854D1F00D50227 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		BBDBB5A524854D1F00D50227 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +123,7 @@
 		4D381D53247F13C000C9896E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4D79E8632486F2300012D9AB /* Challenges */,
 				BBDBB5A324854D0800D50227 /* Home */,
 				4D381D58247F144500C9896E /* User */,
 				4D381D70248196FB00C9896E /* LoginViewController.swift */,
@@ -134,6 +147,7 @@
 				4D381D5E247F149700C9896E /* User.swift */,
 				4D381D60247F14A900C9896E /* Address.swift */,
 				4D381D67247F162300C9896E /* Survey.swift */,
+				4D79E86C2486F2B50012D9AB /* Challenge.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -145,6 +159,7 @@
 				4D381D65247F154700C9896E /* UserFactory.swift */,
 				4D381D69248059EB00C9896E /* addressFactory.swift */,
 				4D381D6B24805AC200C9896E /* addressWebService.swift */,
+				4D79E8702486F7320012D9AB /* ChallengeWebService.swift */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -155,6 +170,17 @@
 				4D381D6E248165C500C9896E /* Database.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		4D79E8632486F2300012D9AB /* Challenges */ = {
+			isa = PBXGroup;
+			children = (
+				4D79E8642486F26F0012D9AB /* ChallengesViewController.swift */,
+				4D79E8652486F26F0012D9AB /* ChallengesViewController.xib */,
+				4D79E8682486F2960012D9AB /* ChallengeTableViewCell.swift */,
+				4D79E8692486F2960012D9AB /* ChallengeTableViewCell.xib */,
+			);
+			path = Challenges;
 			sourceTree = "<group>";
 		};
 		BBDBB5A324854D0800D50227 /* Home */ = {
@@ -228,6 +254,8 @@
 			files = (
 				BBDBB5A724854D1F00D50227 /* UserTableViewCell.xib in Resources */,
 				4D142B6C247C2FD8000EE55D /* LaunchScreen.storyboard in Resources */,
+				4D79E86B2486F2960012D9AB /* ChallengeTableViewCell.xib in Resources */,
+				4D79E8672486F26F0012D9AB /* ChallengesViewController.xib in Resources */,
 				4D381D5C247F146400C9896E /* RegisterViewController.xib in Resources */,
 				4D381D73248196FB00C9896E /* LoginViewController.xib in Resources */,
 				4D142B69247C2FD8000EE55D /* Preview Assets.xcassets in Resources */,
@@ -243,9 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D79E8712486F7320012D9AB /* ChallengeWebService.swift in Sources */,
 				4D381D68247F162300C9896E /* Survey.swift in Sources */,
+				4D79E8662486F26F0012D9AB /* ChallengesViewController.swift in Sources */,
 				4D381D6C24805AC200C9896E /* addressWebService.swift in Sources */,
 				4D381D61247F14A900C9896E /* Address.swift in Sources */,
+				4D79E86D2486F2B50012D9AB /* Challenge.swift in Sources */,
 				BBDBB5A624854D1F00D50227 /* UserTableViewCell.swift in Sources */,
 				4D142B60247C2FD5000EE55D /* AppDelegate.swift in Sources */,
 				4D381D7624829DF800C9896E /* HomeViewController.swift in Sources */,
@@ -255,6 +286,7 @@
 				4D381D5F247F149700C9896E /* User.swift in Sources */,
 				4D381D64247F153800C9896E /* UserWebService.swift in Sources */,
 				4D381D5B247F146400C9896E /* RegisterViewController.swift in Sources */,
+				4D79E86A2486F2960012D9AB /* ChallengeTableViewCell.swift in Sources */,
 				4D381D72248196FB00C9896E /* LoginViewController.swift in Sources */,
 				4D381D6A248059EB00C9896E /* addressFactory.swift in Sources */,
 			);
