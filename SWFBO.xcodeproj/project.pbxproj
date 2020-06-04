@@ -32,6 +32,11 @@
 		4D79E86B2486F2960012D9AB /* ChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D79E8692486F2960012D9AB /* ChallengeTableViewCell.xib */; };
 		4D79E86D2486F2B50012D9AB /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D79E86C2486F2B50012D9AB /* Challenge.swift */; };
 		4D79E8712486F7320012D9AB /* ChallengeWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D79E8702486F7320012D9AB /* ChallengeWebService.swift */; };
+		4DD9AF192488248300928AAB /* ChallengeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9AF182488248200928AAB /* ChallengeFactory.swift */; };
+		4DD9AF2124882F4A00928AAB /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9AF1F24882F4A00928AAB /* MenuTableViewCell.swift */; };
+		4DD9AF2224882F4A00928AAB /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD9AF2024882F4A00928AAB /* MenuTableViewCell.xib */; };
+		4DD9AF252488315200928AAB /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9AF232488315200928AAB /* MenuViewController.swift */; };
+		4DD9AF262488315200928AAB /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD9AF242488315200928AAB /* MenuViewController.xib */; };
 		BBDBB5A624854D1F00D50227 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDBB5A424854D1F00D50227 /* UserTableViewCell.swift */; };
 		BBDBB5A724854D1F00D50227 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDBB5A524854D1F00D50227 /* UserTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -64,6 +69,11 @@
 		4D79E8692486F2960012D9AB /* ChallengeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTableViewCell.xib; sourceTree = "<group>"; };
 		4D79E86C2486F2B50012D9AB /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		4D79E8702486F7320012D9AB /* ChallengeWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeWebService.swift; sourceTree = "<group>"; };
+		4DD9AF182488248200928AAB /* ChallengeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFactory.swift; sourceTree = "<group>"; };
+		4DD9AF1F24882F4A00928AAB /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		4DD9AF2024882F4A00928AAB /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
+		4DD9AF232488315200928AAB /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		4DD9AF242488315200928AAB /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		BBDBB5A424854D1F00D50227 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		BBDBB5A524854D1F00D50227 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +133,7 @@
 		4D381D53247F13C000C9896E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4DD9AF1E24882F2B00928AAB /* Navigation */,
 				4D79E8632486F2300012D9AB /* Challenges */,
 				BBDBB5A324854D0800D50227 /* Home */,
 				4D381D58247F144500C9896E /* User */,
@@ -155,6 +166,7 @@
 		4D381D62247F151F00C9896E /* WebService */ = {
 			isa = PBXGroup;
 			children = (
+				4DD9AF182488248200928AAB /* ChallengeFactory.swift */,
 				4D381D63247F153800C9896E /* UserWebService.swift */,
 				4D381D65247F154700C9896E /* UserFactory.swift */,
 				4D381D69248059EB00C9896E /* addressFactory.swift */,
@@ -181,6 +193,17 @@
 				4D79E8692486F2960012D9AB /* ChallengeTableViewCell.xib */,
 			);
 			path = Challenges;
+			sourceTree = "<group>";
+		};
+		4DD9AF1E24882F2B00928AAB /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				4DD9AF1F24882F4A00928AAB /* MenuTableViewCell.swift */,
+				4DD9AF2024882F4A00928AAB /* MenuTableViewCell.xib */,
+				4DD9AF232488315200928AAB /* MenuViewController.swift */,
+				4DD9AF242488315200928AAB /* MenuViewController.xib */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		BBDBB5A324854D0800D50227 /* Home */ = {
@@ -259,6 +282,8 @@
 				4D381D5C247F146400C9896E /* RegisterViewController.xib in Resources */,
 				4D381D73248196FB00C9896E /* LoginViewController.xib in Resources */,
 				4D142B69247C2FD8000EE55D /* Preview Assets.xcassets in Resources */,
+				4DD9AF262488315200928AAB /* MenuViewController.xib in Resources */,
+				4DD9AF2224882F4A00928AAB /* MenuTableViewCell.xib in Resources */,
 				4D381D7724829DF800C9896E /* HomeViewController.xib in Resources */,
 				4D142B66247C2FD8000EE55D /* Assets.xcassets in Resources */,
 			);
@@ -273,6 +298,7 @@
 			files = (
 				4D79E8712486F7320012D9AB /* ChallengeWebService.swift in Sources */,
 				4D381D68247F162300C9896E /* Survey.swift in Sources */,
+				4DD9AF2124882F4A00928AAB /* MenuTableViewCell.swift in Sources */,
 				4D79E8662486F26F0012D9AB /* ChallengesViewController.swift in Sources */,
 				4D381D6C24805AC200C9896E /* addressWebService.swift in Sources */,
 				4D381D61247F14A900C9896E /* Address.swift in Sources */,
@@ -280,6 +306,7 @@
 				BBDBB5A624854D1F00D50227 /* UserTableViewCell.swift in Sources */,
 				4D142B60247C2FD5000EE55D /* AppDelegate.swift in Sources */,
 				4D381D7624829DF800C9896E /* HomeViewController.swift in Sources */,
+				4DD9AF252488315200928AAB /* MenuViewController.swift in Sources */,
 				4D381D66247F154700C9896E /* UserFactory.swift in Sources */,
 				4D381D6F248165C500C9896E /* Database.swift in Sources */,
 				4D142B62247C2FD5000EE55D /* SceneDelegate.swift in Sources */,
@@ -289,6 +316,7 @@
 				4D79E86A2486F2960012D9AB /* ChallengeTableViewCell.swift in Sources */,
 				4D381D72248196FB00C9896E /* LoginViewController.swift in Sources */,
 				4D381D6A248059EB00C9896E /* addressFactory.swift in Sources */,
+				4DD9AF192488248300928AAB /* ChallengeFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,17 +26,18 @@ class LoginViewController: UIViewController {
         if(email == "" || password == ""){
 
         } else {
-            var user = User(email: email!, password: password!)
+            let user = User(email: email!, password: password!)
             self.userWebService.login(user: user) { (userRes) in
                 if(userRes.token != "nil"){
                     let db:DBHelper = DBHelper()
                     self.userWebService.getAdditionnalData(user: user) { (userComplete) in
+                        print(userComplete.isAdmin)
                         if(userComplete.isAdmin){
                             db.insert(id: 0, firstname: userComplete.firstname!, lastname: userComplete.lastname!, email: user.email, token: user.token)
                             user.firstname = userComplete.firstname
                             user.lastname = userComplete.lastname
                             DispatchQueue.main.async {
-                                let homePage = HomeViewController.newInstance(user: user)
+                                let homePage = MenuViewController.newInstance(user: user)
                                 self.navigationController?.pushViewController(homePage, animated: true)
                             }
                         } else {

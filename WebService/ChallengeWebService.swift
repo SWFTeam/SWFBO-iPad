@@ -9,7 +9,9 @@
 import Foundation
 
 class ChallengeWebService {
+    
     let endpoint: String = "http://localhost:3000/"
+    
     func getChallengebyId(token: String, id: Int, completion: @escaping(Challenge) -> Void) -> Void {
         guard let challengeURL = URL(string: self.endpoint + "challenge") else {
             return;
@@ -45,6 +47,34 @@ class ChallengeWebService {
             }
             completion(challenge)
         }
+        task.resume()
+    }
+    
+    func getAllChallenges(token: String, completion: @escaping([Challenge]) -> Void ) -> Void {
+        guard let challengesURL = URL(string: self.endpoint + "bo/challenges") else {
+            return;
+        }
+        var request: URLRequest = URLRequest(url: challengesURL)
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, res, err) in
+            guard let bytes = data,
+                err == nil,
+                let json = try? JSONSerialization.jsonObject(with: bytes, options: .allowFragments) as? [Array<Any>] else {
+                    completion([])
+                    return
+                }
+            let challenges = json.compactMap{ (obj) -> Challenge? in
+                var challenge: Challenge!
+                for object in obj {
+                    guard let dict = object as? [String: Any] else {
+                        return nil
+                    }
+                    challenge = ChallengeFactory.challengeFrom(dictionnary: dict)
+                }
+                return challenge
+            }
+            completion(challenges)
+        })
         task.resume()
     }
 }

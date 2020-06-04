@@ -10,13 +10,14 @@ import Foundation
 
 class Challenge: Codable, CustomStringConvertible {
     
-    var id: Int!
-    var countryCode: String!
-    var title: String!
-    var name: String!
-    var descr: String!
+    var id: Int
+    var countryCode: String
+    var title: String
+    var name: String
+    var descr: String
     
     init(id: Int, countryCode: String, title: String, name: String, descr: String) {
+        self.id = id
         self.countryCode = countryCode
         self.title = title
         self.name = name

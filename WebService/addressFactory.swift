@@ -23,9 +23,9 @@ class AddressFactory {
         }
         
         if(id != nil){
-            return Address(id: id!, country: country, city: city, street: street, zipCode: zipCode, nbHouse: nbHouse, complement: complement)
+            return Address(id: id!, country: country, city: city, street: street, zipCode: zipCode, nbHouse: nbHouse, complement: complement, created_at: created_at)
         } else {
-            return Address(id: id!, country: country, city: city, street: street, zipCode: zipCode, nbHouse: nbHouse, complement: complement)
+            return Address(id: id!, country: country, city: city, street: street, zipCode: zipCode, nbHouse: nbHouse, complement: complement, created_at: created_at)
         }
         
     }

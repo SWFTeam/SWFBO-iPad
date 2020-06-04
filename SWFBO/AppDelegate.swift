@@ -20,11 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let w = UIWindow(frame: UIScreen.main.bounds)
         let db:DBHelper = DBHelper()
         let user = db.selectWhereId(id: 0)
-        challengeWebService.getChallengebyId(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTkxMTMxMzIzLCJleHAiOjE1OTEyMTc3MjN9.A-SvSrH87e0kv0DDp6iwbwbkHWdQ3bAu6rluHS45tIQ", id: 2, completion: { (challenge) in
-            print(challenge)
-        })
+        /*challengeWebService.getAllChallenges(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTkxMjA5NzQ0LCJleHAiOjE1OTEyOTYxNDR9.l8SGx8sonTnpHa0NC660Ilr3cJd_ciT2dMAzjfN_GaA", completion: { (challenges) in
+            print(challenges)
+        })*/
         if(user.email != "nil"){
-            w.rootViewController =  UINavigationController(rootViewController: HomeViewController())
+            w.rootViewController =  UINavigationController(rootViewController: MenuViewController())
         } else {
             w.rootViewController =  UINavigationController(rootViewController: LoginViewController())
         }
