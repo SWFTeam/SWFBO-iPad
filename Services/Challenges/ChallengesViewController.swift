@@ -33,7 +33,7 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.challengesTableView.dequeueReusableCell(withIdentifier: "ChallengeTableViewCell") as! ChallengeTableViewCell
         let entry = self.challenges[indexPath.row]
-        cell.challNameLabel.text = entry.name
+        cell.challNameLabel.text = entry.descriptions[0].title
         return cell
     }
     

@@ -37,13 +37,17 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.menuTableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell") as! MenuTableViewCell
         let entry = self.entries[indexPath.row]
-        cell.enntryLabel.text = entry
+        cell.entryLabel.text = entry
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let entry = self.entries[indexPath.row]
         var view: UIViewController
+        /**
+         *TODO
+         *Place self.stackView.addArrangedSubview(view.view) only one tilme after switch statements
+         */
         switch entry {
         case "Home":
             let user = db.selectWhereId(id: 2)
@@ -53,6 +57,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         case "Challenges":
             challengeWebService.getAllChallenges(token: self.user.token) { (challenges) in
                 print(challenges)
+                DispatchQueue.main.async {
+                   // let viewTest = ChallengesViewController.newInstance(challenges: challenges)
+                   // self.stackView.addArrangedSubview(viewTest.view)
+                }
             }
             break
         case "Users":

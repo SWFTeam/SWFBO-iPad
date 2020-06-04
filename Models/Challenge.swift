@@ -11,20 +11,14 @@ import Foundation
 class Challenge: Codable, CustomStringConvertible {
     
     var id: Int
-    var countryCode: String
-    var title: String
-    var name: String
-    var descr: String
+    var descriptions: [Description]
     
-    init(id: Int, countryCode: String, title: String, name: String, descr: String) {
+    init(id: Int, descriptions: [Description]) {
         self.id = id
-        self.countryCode = countryCode
-        self.title = title
-        self.name = name
-        self.descr = descr
+        self.descriptions = descriptions
     }
     
     var description: String {
-        return "\(self.id) - \(self.countryCode) - \(self.title) - \(self.name) - \(self.descr)"
+        return ("\(self.id) - \(self.descriptions)")
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class MenuTableViewCell: UITableViewCell {
 
-    @IBOutlet var enntryLabel: UILabel!
+    @IBOutlet var entryLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,7 +18,7 @@ class MenuTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        print(self.enntryLabel.text!)
+        print(self.entryLabel.text!)
         // Configure the view for the selected state
     }
     

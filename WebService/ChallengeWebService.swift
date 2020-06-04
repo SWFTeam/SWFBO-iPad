@@ -12,7 +12,7 @@ class ChallengeWebService {
     
     let endpoint: String = "http://localhost:3000/"
     
-    func getChallengebyId(token: String, id: Int, completion: @escaping(Challenge) -> Void) -> Void {
+    /*func getChallengebyId(token: String, id: Int, completion: @escaping(Challenge) -> Void) -> Void {
         guard let challengeURL = URL(string: self.endpoint + "challenge") else {
             return;
         }
@@ -30,7 +30,8 @@ class ChallengeWebService {
                 return
             }
             if let httpRes = response as? HTTPURLResponse {
-                if httpRes.statusCode == 200 {                    let result = try? JSONSerialization.jsonObject(with: data!, options: [])
+                if httpRes.statusCode == 200 {
+                    let result = try? JSONSerialization.jsonObject(with: data!, options: [])
                     if let dictionary = result as? [String: [String: Any]] {
                         let descriptions = dictionary["challenge"]!["descriptions"]!
                         let descrs = descriptions as! Array<Any>
@@ -48,7 +49,7 @@ class ChallengeWebService {
             completion(challenge)
         }
         task.resume()
-    }
+    }*/
     
     func getAllChallenges(token: String, completion: @escaping([Challenge]) -> Void ) -> Void {
         guard let challengesURL = URL(string: self.endpoint + "bo/challenges") else {
@@ -59,22 +60,36 @@ class ChallengeWebService {
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, res, err) in
             guard let bytes = data,
                 err == nil,
-                let json = try? JSONSerialization.jsonObject(with: bytes, options: .allowFragments) as? [Array<Any>] else {
+                let json = try? JSONSerialization.jsonObject(with: bytes, options: .allowFragments) as? [[String: Any]] else {
                     completion([])
                     return
                 }
             let challenges = json.compactMap{ (obj) -> Challenge? in
+                guard let dict = obj as? [String: Any] else {
+                    return nil
+                }
                 var challenge: Challenge!
-                for object in obj {
-                    guard let dict = object as? [String: Any] else {
+                let descrs = dict["description"] as! [Any]
+                var descriptions: [Description] = [Description]()
+                let challId: Int = (dict["id"] as? Int)!
+                for object in descrs{
+                    guard let dico = object as? [String: Any] else {
                         return nil
                     }
-                    challenge = ChallengeFactory.challengeFrom(dictionnary: dict)
+                    descriptions.append(DescriptionFactory.descriptionFrom(dictionnary: dico))
                 }
+                challenge = Challenge(id: challId, descriptions: descriptions)
                 return challenge
             }
             completion(challenges)
         })
         task.resume()
+    }
+    
+    func updateChallenge(token: String, completion: @escaping(Challenge) -> Void ) -> Void {
+        guard let challengeURL = URL(string: self.endpoint + "challenge") else {
+            return;
+        }
+        var request: URLRequest = URLRequest(url: challengeURL)
     }
 }

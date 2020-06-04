@@ -30,7 +30,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="enntryLabel" destination="SkA-qk-OxM" id="hdd-Hn-VE6"/>
+                <outlet property="entryLabel" destination="SkA-qk-OxM" id="Bjr-Kr-1WI"/>
             </connections>
             <point key="canvasLocation" x="133" y="154"/>
         </tableViewCell>

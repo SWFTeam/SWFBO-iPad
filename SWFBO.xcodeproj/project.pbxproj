@@ -32,7 +32,10 @@
 		4D79E86B2486F2960012D9AB /* ChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D79E8692486F2960012D9AB /* ChallengeTableViewCell.xib */; };
 		4D79E86D2486F2B50012D9AB /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D79E86C2486F2B50012D9AB /* Challenge.swift */; };
 		4D79E8712486F7320012D9AB /* ChallengeWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D79E8702486F7320012D9AB /* ChallengeWebService.swift */; };
-		4DD9AF192488248300928AAB /* ChallengeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9AF182488248200928AAB /* ChallengeFactory.swift */; };
+		4D7B1DD12489912B0072B2B6 /* DetailsChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B1DCF2489912B0072B2B6 /* DetailsChallengeViewController.swift */; };
+		4D7B1DD22489912B0072B2B6 /* DetailsChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B1DD02489912B0072B2B6 /* DetailsChallengeViewController.xib */; };
+		4DB3109B2489972B0017A2A6 /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB3109A2489972B0017A2A6 /* Description.swift */; };
+		4DB3109D2489990C0017A2A6 /* DescriptionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB3109C2489990C0017A2A6 /* DescriptionFactory.swift */; };
 		4DD9AF2124882F4A00928AAB /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9AF1F24882F4A00928AAB /* MenuTableViewCell.swift */; };
 		4DD9AF2224882F4A00928AAB /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD9AF2024882F4A00928AAB /* MenuTableViewCell.xib */; };
 		4DD9AF252488315200928AAB /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9AF232488315200928AAB /* MenuViewController.swift */; };
@@ -69,7 +72,10 @@
 		4D79E8692486F2960012D9AB /* ChallengeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTableViewCell.xib; sourceTree = "<group>"; };
 		4D79E86C2486F2B50012D9AB /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		4D79E8702486F7320012D9AB /* ChallengeWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeWebService.swift; sourceTree = "<group>"; };
-		4DD9AF182488248200928AAB /* ChallengeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFactory.swift; sourceTree = "<group>"; };
+		4D7B1DCF2489912B0072B2B6 /* DetailsChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsChallengeViewController.swift; sourceTree = "<group>"; };
+		4D7B1DD02489912B0072B2B6 /* DetailsChallengeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsChallengeViewController.xib; sourceTree = "<group>"; };
+		4DB3109A2489972B0017A2A6 /* Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
+		4DB3109C2489990C0017A2A6 /* DescriptionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionFactory.swift; sourceTree = "<group>"; };
 		4DD9AF1F24882F4A00928AAB /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		4DD9AF2024882F4A00928AAB /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		4DD9AF232488315200928AAB /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +165,7 @@
 				4D381D60247F14A900C9896E /* Address.swift */,
 				4D381D67247F162300C9896E /* Survey.swift */,
 				4D79E86C2486F2B50012D9AB /* Challenge.swift */,
+				4DB3109A2489972B0017A2A6 /* Description.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -166,12 +173,12 @@
 		4D381D62247F151F00C9896E /* WebService */ = {
 			isa = PBXGroup;
 			children = (
-				4DD9AF182488248200928AAB /* ChallengeFactory.swift */,
 				4D381D63247F153800C9896E /* UserWebService.swift */,
 				4D381D65247F154700C9896E /* UserFactory.swift */,
 				4D381D69248059EB00C9896E /* addressFactory.swift */,
 				4D381D6B24805AC200C9896E /* addressWebService.swift */,
 				4D79E8702486F7320012D9AB /* ChallengeWebService.swift */,
+				4DB3109C2489990C0017A2A6 /* DescriptionFactory.swift */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -191,6 +198,8 @@
 				4D79E8652486F26F0012D9AB /* ChallengesViewController.xib */,
 				4D79E8682486F2960012D9AB /* ChallengeTableViewCell.swift */,
 				4D79E8692486F2960012D9AB /* ChallengeTableViewCell.xib */,
+				4D7B1DCF2489912B0072B2B6 /* DetailsChallengeViewController.swift */,
+				4D7B1DD02489912B0072B2B6 /* DetailsChallengeViewController.xib */,
 			);
 			path = Challenges;
 			sourceTree = "<group>";
@@ -282,6 +291,7 @@
 				4D381D5C247F146400C9896E /* RegisterViewController.xib in Resources */,
 				4D381D73248196FB00C9896E /* LoginViewController.xib in Resources */,
 				4D142B69247C2FD8000EE55D /* Preview Assets.xcassets in Resources */,
+				4D7B1DD22489912B0072B2B6 /* DetailsChallengeViewController.xib in Resources */,
 				4DD9AF262488315200928AAB /* MenuViewController.xib in Resources */,
 				4DD9AF2224882F4A00928AAB /* MenuTableViewCell.xib in Resources */,
 				4D381D7724829DF800C9896E /* HomeViewController.xib in Resources */,
@@ -310,13 +320,15 @@
 				4D381D66247F154700C9896E /* UserFactory.swift in Sources */,
 				4D381D6F248165C500C9896E /* Database.swift in Sources */,
 				4D142B62247C2FD5000EE55D /* SceneDelegate.swift in Sources */,
+				4DB3109B2489972B0017A2A6 /* Description.swift in Sources */,
 				4D381D5F247F149700C9896E /* User.swift in Sources */,
+				4D7B1DD12489912B0072B2B6 /* DetailsChallengeViewController.swift in Sources */,
 				4D381D64247F153800C9896E /* UserWebService.swift in Sources */,
+				4DB3109D2489990C0017A2A6 /* DescriptionFactory.swift in Sources */,
 				4D381D5B247F146400C9896E /* RegisterViewController.swift in Sources */,
 				4D79E86A2486F2960012D9AB /* ChallengeTableViewCell.swift in Sources */,
 				4D381D72248196FB00C9896E /* LoginViewController.swift in Sources */,
 				4D381D6A248059EB00C9896E /* addressFactory.swift in Sources */,
-				4DD9AF192488248300928AAB /* ChallengeFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
