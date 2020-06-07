@@ -27,7 +27,6 @@ class UserWebService {
                 }
                 if let httpRes = response as? HTTPURLResponse {
                     completion(httpRes.statusCode == 201)
-                    print(user.description)
                     return
                 }
                 completion(false)

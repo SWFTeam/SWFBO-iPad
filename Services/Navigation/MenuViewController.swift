@@ -43,16 +43,19 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let entry = self.entries[indexPath.row]
-        var view: UIViewController
         /**
          *TODO
          *Place self.stackView.addArrangedSubview(view.view) only one tilme after switch statements
          */
         switch entry {
         case "Home":
-            let user = db.selectWhereId(id: 2)
-            view = HomeViewController.newInstance(user: user)
-            self.stackView.addArrangedSubview(view.view)
+            let user = db.selectWhereId(id: 1)
+            var homeView = HomeViewController()
+            homeView = HomeViewController.newInstance(user: user)
+            /*homeView.userTableView.dataSource = homeView.userDataSource
+            homeView.userTableView.delegate = homeView.userDelegate*/
+            
+            self.stackView.addSubview(homeView.view)
             break
         case "Challenges":
             challengeWebService.getAllChallenges(token: self.user.token) { (challenges) in
@@ -61,7 +64,6 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     self.stackView.addSubview(viewTest.view)
                     viewTest.challengesTableView.dataSource = viewTest.dataSource
                     viewTest.challengesTableView.delegate = viewTest.delegate
-    
                 }
                 /*DispatchQueue.main.async {
                     let testView = ChallengesViewController.newInstance(challenges: challenges)

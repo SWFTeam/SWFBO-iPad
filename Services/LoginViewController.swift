@@ -40,6 +40,10 @@ class LoginViewController: UIViewController {
                                 let homePage = MenuViewController.newInstance(user: user)
                                 self.navigationController?.pushViewController(homePage, animated: true)
                             }
+                            /*DispatchQueue.main.async {
+                                let homePage = HomeViewController.newInstance(user: user)
+                                self.navigationController?.pushViewController(homePage, animated: true)
+                            }*/
                         } else {
                             print("RESTRICTED ACCESS, NOT ALLOWED")
                         }

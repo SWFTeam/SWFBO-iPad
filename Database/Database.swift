@@ -14,8 +14,8 @@ class DBHelper
 {
     init()
     {
+        //print("Table creation:", dropTable(tableName: "user"))
         db = openDatabase()
-        dropTable(tableName: "user")
         createTable()
     }
 
