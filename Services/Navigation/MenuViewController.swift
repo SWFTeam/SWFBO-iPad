@@ -56,11 +56,14 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             break
         case "Challenges":
             challengeWebService.getAllChallenges(token: self.user.token) { (challenges) in
-                print(challenges)
                 DispatchQueue.main.async {
-                   // let viewTest = ChallengesViewController.newInstance(challenges: challenges)
-                   // self.stackView.addArrangedSubview(viewTest.view)
+                   let viewTest = ChallengesViewController.newInstance(challenges: challenges)
+                    self.stackView.addSubview(viewTest.view)
                 }
+                /*DispatchQueue.main.async {
+                    let testView = ChallengesViewController.newInstance(challenges: challenges)
+                    self.navigationController?.pushViewController(testView, animated: true)
+                }*/
             }
             break
         case "Users":
