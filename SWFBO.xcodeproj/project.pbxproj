@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		431B02A9CF45F81B55F40927 /* Pods_SWFBO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0660E5A924A02FA5E179A303 /* Pods_SWFBO.framework */; };
 		4D142B60247C2FD5000EE55D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D142B5F247C2FD5000EE55D /* AppDelegate.swift */; };
 		4D142B62247C2FD5000EE55D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D142B61247C2FD5000EE55D /* SceneDelegate.swift */; };
 		4D142B66247C2FD8000EE55D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D142B65247C2FD8000EE55D /* Assets.xcassets */; };
@@ -26,11 +27,16 @@
 		4D381D73248196FB00C9896E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D381D71248196FB00C9896E /* LoginViewController.xib */; };
 		4D381D7624829DF800C9896E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D381D7424829DF800C9896E /* HomeViewController.swift */; };
 		4D381D7724829DF800C9896E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D381D7524829DF800C9896E /* HomeViewController.xib */; };
+		BBAA8F9424880217001B729D /* APITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAA8F9224880217001B729D /* APITableViewCell.swift */; };
+		BBAA8F9524880217001B729D /* APITableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBAA8F9324880217001B729D /* APITableViewCell.xib */; };
+		BBAA8F9724880F36001B729D /* APIWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAA8F9624880F36001B729D /* APIWebService.swift */; };
 		BBDBB5A624854D1F00D50227 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDBB5A424854D1F00D50227 /* UserTableViewCell.swift */; };
 		BBDBB5A724854D1F00D50227 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDBB5A524854D1F00D50227 /* UserTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0660E5A924A02FA5E179A303 /* Pods_SWFBO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWFBO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C4E842FC97AD874A57C409C /* Pods-SWFBO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWFBO.release.xcconfig"; path = "Target Support Files/Pods-SWFBO/Pods-SWFBO.release.xcconfig"; sourceTree = "<group>"; };
 		4D142B5C247C2FD5000EE55D /* SWFBO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWFBO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D142B5F247C2FD5000EE55D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D142B61247C2FD5000EE55D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,8 +58,12 @@
 		4D381D71248196FB00C9896E /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		4D381D7424829DF800C9896E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Services/Home/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		4D381D7524829DF800C9896E /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = Services/Home/HomeViewController.xib; sourceTree = SOURCE_ROOT; };
+		BBAA8F9224880217001B729D /* APITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITableViewCell.swift; sourceTree = "<group>"; };
+		BBAA8F9324880217001B729D /* APITableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = APITableViewCell.xib; sourceTree = "<group>"; };
+		BBAA8F9624880F36001B729D /* APIWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWebService.swift; sourceTree = "<group>"; };
 		BBDBB5A424854D1F00D50227 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		BBDBB5A524854D1F00D50227 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
+		C2672C2F475EA8CCFD7A5505 /* Pods-SWFBO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWFBO.debug.xcconfig"; path = "Target Support Files/Pods-SWFBO/Pods-SWFBO.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				431B02A9CF45F81B55F40927 /* Pods_SWFBO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +87,8 @@
 				4D381D53247F13C000C9896E /* Services */,
 				4D142B5E247C2FD5000EE55D /* SWFBO */,
 				4D142B5D247C2FD5000EE55D /* Products */,
+				C0A1C0F6283B40D97224A46E /* Pods */,
+				8384D47E08395A34684D587F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +158,7 @@
 				4D381D65247F154700C9896E /* UserFactory.swift */,
 				4D381D69248059EB00C9896E /* addressFactory.swift */,
 				4D381D6B24805AC200C9896E /* addressWebService.swift */,
+				BBAA8F9624880F36001B729D /* APIWebService.swift */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -157,6 +171,14 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		8384D47E08395A34684D587F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0660E5A924A02FA5E179A303 /* Pods_SWFBO.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BBDBB5A324854D0800D50227 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,8 +186,19 @@
 				4D381D7524829DF800C9896E /* HomeViewController.xib */,
 				BBDBB5A424854D1F00D50227 /* UserTableViewCell.swift */,
 				BBDBB5A524854D1F00D50227 /* UserTableViewCell.xib */,
+				BBAA8F9224880217001B729D /* APITableViewCell.swift */,
+				BBAA8F9324880217001B729D /* APITableViewCell.xib */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		C0A1C0F6283B40D97224A46E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C2672C2F475EA8CCFD7A5505 /* Pods-SWFBO.debug.xcconfig */,
+				1C4E842FC97AD874A57C409C /* Pods-SWFBO.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,9 +208,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4D142B70247C2FD8000EE55D /* Build configuration list for PBXNativeTarget "SWFBO" */;
 			buildPhases = (
+				CC1410241A0FB4D442F4B7B9 /* [CP] Check Pods Manifest.lock */,
 				4D142B58247C2FD5000EE55D /* Sources */,
 				4D142B59247C2FD5000EE55D /* Frameworks */,
 				4D142B5A247C2FD5000EE55D /* Resources */,
+				D756B24AF25FB0FB3418B9F3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -228,6 +263,7 @@
 			files = (
 				BBDBB5A724854D1F00D50227 /* UserTableViewCell.xib in Resources */,
 				4D142B6C247C2FD8000EE55D /* LaunchScreen.storyboard in Resources */,
+				BBAA8F9524880217001B729D /* APITableViewCell.xib in Resources */,
 				4D381D5C247F146400C9896E /* RegisterViewController.xib in Resources */,
 				4D381D73248196FB00C9896E /* LoginViewController.xib in Resources */,
 				4D142B69247C2FD8000EE55D /* Preview Assets.xcassets in Resources */,
@@ -237,6 +273,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CC1410241A0FB4D442F4B7B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SWFBO-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D756B24AF25FB0FB3418B9F3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SWFBO/Pods-SWFBO-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SWFBO/Pods-SWFBO-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SWFBO/Pods-SWFBO-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4D142B58247C2FD5000EE55D /* Sources */ = {
@@ -250,11 +328,13 @@
 				4D142B60247C2FD5000EE55D /* AppDelegate.swift in Sources */,
 				4D381D7624829DF800C9896E /* HomeViewController.swift in Sources */,
 				4D381D66247F154700C9896E /* UserFactory.swift in Sources */,
+				BBAA8F9724880F36001B729D /* APIWebService.swift in Sources */,
 				4D381D6F248165C500C9896E /* Database.swift in Sources */,
 				4D142B62247C2FD5000EE55D /* SceneDelegate.swift in Sources */,
 				4D381D5F247F149700C9896E /* User.swift in Sources */,
 				4D381D64247F153800C9896E /* UserWebService.swift in Sources */,
 				4D381D5B247F146400C9896E /* RegisterViewController.swift in Sources */,
+				BBAA8F9424880217001B729D /* APITableViewCell.swift in Sources */,
 				4D381D72248196FB00C9896E /* LoginViewController.swift in Sources */,
 				4D381D6A248059EB00C9896E /* addressFactory.swift in Sources */,
 			);
@@ -390,6 +470,7 @@
 		};
 		4D142B71247C2FD8000EE55D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2672C2F475EA8CCFD7A5505 /* Pods-SWFBO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -410,6 +491,7 @@
 		};
 		4D142B72247C2FD8000EE55D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C4E842FC97AD874A57C409C /* Pods-SWFBO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="SWFBO" customModuleProvider="target">
             <connections>
+                <outlet property="apiTableView" destination="hIl-CQ-UBS" id="qVe-rd-d5h"/>
+                <outlet property="chartView" destination="5No-QR-DDW" id="0xm-WQ-OPn"/>
                 <outlet property="userTableView" destination="Y6y-Yv-2RV" id="ZxW-IC-gKj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -18,13 +20,35 @@
             <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y6y-Yv-2RV">
-                    <rect key="frame" x="20" y="20" width="500" height="257"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y6y-Yv-2RV">
+                    <rect key="frame" x="10" y="20" width="508" height="257"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="257" id="eOW-zJ-WWb"/>
+                    </constraints>
                 </tableView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hIl-CQ-UBS">
+                    <rect key="frame" x="528" y="20" width="564" height="257"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="257" id="1zQ-1o-LMY"/>
+                        <constraint firstAttribute="width" constant="564" id="KU5-zl-qwi"/>
+                    </constraints>
+                </tableView>
+                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5No-QR-DDW">
+                    <rect key="frame" x="10" y="285" width="1082" height="529"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="hIl-CQ-UBS" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="612-Cu-ip1"/>
+                <constraint firstItem="hIl-CQ-UBS" firstAttribute="leading" secondItem="Y6y-Yv-2RV" secondAttribute="trailing" constant="10" id="M3B-5d-ifX"/>
+                <constraint firstItem="Y6y-Yv-2RV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="Mp0-Jy-CaR"/>
+                <constraint firstItem="hIl-CQ-UBS" firstAttribute="leading" secondItem="Y6y-Yv-2RV" secondAttribute="trailing" constant="10" id="NAh-eO-Ns7"/>
+                <constraint firstItem="hIl-CQ-UBS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="NKn-uP-gXk"/>
+                <constraint firstItem="Y6y-Yv-2RV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="gZh-Vf-Dhw"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="140.28776978417267" y="139.56834532374103"/>
         </view>

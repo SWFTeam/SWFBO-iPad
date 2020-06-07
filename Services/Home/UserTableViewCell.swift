@@ -11,8 +11,12 @@ import UIKit
 class UserTableViewCell: UITableViewCell {
     
     var nbUsers: Int!
+    var lastWeekUsers: [User]!
+    var lastDayUsers: [User]!
     
-    @IBOutlet weak var nbUsersLabel: UILabel!
+    @IBOutlet var nbUsersLabel: UILabel!
+    @IBOutlet var nbLastWeekUsers: UILabel!
+    @IBOutlet var nbLastDayUsers: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,8 +32,10 @@ class UserTableViewCell: UITableViewCell {
     }
     
     func setDisplay() {
-        if((self.nbUsers) != nil){
-            self.nbUsersLabel.text = "Utilisateurs : " + String(self.nbUsers)
+        if((self.nbUsers) != nil && (self.lastWeekUsers) != nil && (self.lastDayUsers) != nil){
+            self.nbUsersLabel.text = String(self.nbUsers)
+            self.nbLastWeekUsers.text = String(self.lastWeekUsers.count)
+            self.nbLastDayUsers.text = String(self.lastDayUsers.count)
         }
     }
     

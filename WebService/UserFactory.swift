@@ -11,7 +11,6 @@ import Foundation
 class UserFactory {
     static func userFrom(dictionnary: [String: Any]) -> User? {
         let id: Int? = dictionnary["id"] as? Int
-        print(dictionnary)
         guard let firstname = dictionnary["firstname"] as? String,
             let lastname = dictionnary["lastname"] as? String,
             let email = dictionnary["email_address"] as? String,
@@ -21,7 +20,6 @@ class UserFactory {
             let created_at = dictionnary["created_at"] as? String else {
                 return nil
         }
-        print(firstname, lastname, email, password, birthday)
         
         if(id != nil){
             let user = User(id: id!, firstname: firstname, lastname: lastname, email: email, password: password, birthday: birthday, last_login_at: last_login_at, created_at: created_at, isAdmin: true)
