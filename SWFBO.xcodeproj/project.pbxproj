@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		431B02A9CF45F81B55F40927 /* Pods_SWFBO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0660E5A924A02FA5E179A303 /* Pods_SWFBO.framework */; };
 		4D142B60247C2FD5000EE55D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D142B5F247C2FD5000EE55D /* AppDelegate.swift */; };
 		4D142B62247C2FD5000EE55D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D142B61247C2FD5000EE55D /* SceneDelegate.swift */; };
 		4D142B66247C2FD8000EE55D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D142B65247C2FD8000EE55D /* Assets.xcassets */; };
@@ -32,6 +31,7 @@
 		BBAA8F9724880F36001B729D /* APIWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAA8F9624880F36001B729D /* APIWebService.swift */; };
 		BBDBB5A624854D1F00D50227 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDBB5A424854D1F00D50227 /* UserTableViewCell.swift */; };
 		BBDBB5A724854D1F00D50227 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDBB5A524854D1F00D50227 /* UserTableViewCell.xib */; };
+		C896E1F55B972E7F88795988 /* Pods_SWFBO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0660E5A924A02FA5E179A303 /* Pods_SWFBO.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				431B02A9CF45F81B55F40927 /* Pods_SWFBO.framework in Frameworks */,
+				C896E1F55B972E7F88795988 /* Pods_SWFBO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

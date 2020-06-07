@@ -13,7 +13,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var userWebService: UserWebService = UserWebService()
     var apiWebService: APIWebService = APIWebService()
-    var chart: BarChartView = BarChartView()
+    var chart: PieChartView = PieChartView()
     var user: User!
     @IBOutlet var userTableView: UITableView!
     @IBOutlet var apiTableView: UITableView!
@@ -66,7 +66,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
                 
                 self.chart.noDataText = "Aucune donnée à afficher."
-                let values: [Int?] = [80, 60, 20]
+                let values: [Int?] = [self.users.count, lastWeekUsers.count, lastDayUsers.count]
                 self.setChart(values: values)
                 self.chartView.addArrangedSubview(self.chart)
                 
@@ -108,19 +108,28 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func setChart(values: [Int?]){
         
-        var dataEntries: [BarChartDataEntry] = []
+        let dataPoints: [String] = ["nbUsers", "nbLastWeekUsers", "nbLastDayUsers"]
+        var dataEntries: [ChartDataEntry] = []
         
-        let nbUsersEntry = BarChartDataEntry(x: Double(1), y: Double(values[0]!))
-        let lastWeekUsersEntry = BarChartDataEntry(x: Double(2), y: Double(values[1]!))
-        let lastDayUsersEntry = BarChartDataEntry(x: Double(3), y: Double(values[2]!))
-        dataEntries.append(nbUsersEntry)
-        dataEntries.append(lastWeekUsersEntry)
-        dataEntries.append(lastDayUsersEntry)
+        for i in 0..<dataPoints.count {
+            let dataEntry = PieChartDataEntry(value: Double(values[i]!), label: dataPoints[i], data: dataPoints[i] as AnyObject)
+            dataEntries.append(dataEntry)
+        }
         
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Visitor count")
-        let chartData = BarChartData(dataSet: chartDataSet)
+        let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
+        pieChartDataSet.colors = [UIColor.red, UIColor.gray, UIColor.blue]
         
-        self.chart.data = chartData
+        let pieChartData = PieChartData(dataSet: pieChartDataSet)
+        
+        let format = NumberFormatter()
+        format.numberStyle = .none
+        let formatter = DefaultValueFormatter(formatter: format)
+        pieChartData.setValueFormatter(formatter)
+        
+        self.chart.legend.font = UIFont(name: "Helvetica Neue", size: 16.0)!
+        self.chart.entryLabelFont = UIFont(name: "Helvetica Neue", size: 17.0)!
+
+        self.chart.data = pieChartData
     }
 
 }
