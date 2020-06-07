@@ -12,6 +12,8 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
     
     var challenges: [Challenge]!
     @IBOutlet var challengesTableView: UITableView!
+    var dataSource: UITableViewDataSource!
+    var delegate: UITableViewDelegate!
     
     enum Identifier: String{
         case challenges
@@ -23,6 +25,9 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
         self.challengesTableView.register(UINib(nibName: "ChallengeTableViewCell", bundle: nil), forCellReuseIdentifier: "ChallengeTableViewCell")
         self.challengesTableView.dataSource = self // data list listener
         self.challengesTableView.delegate = self // user events listener
+        
+        self.dataSource = self.challengesTableView.dataSource
+        self.delegate = self.challengesTableView.delegate
     }
     
     /*@objc func touchEdit() {
@@ -50,6 +55,9 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let entry = self.challenges[indexPath.row]
+        let dcvc = DetailsChallengeViewController.newInstance(challenge: entry)
+        self.navigationController?.pushViewController(dcvc, animated: true)
+        print(self.navigationController.debugDescription)
         print("CLICKED", entry)
     }
 }

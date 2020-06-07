@@ -23,9 +23,9 @@ class DetailsChallengeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func newInstance(challenge: Challenge){
-        self.idLabel.text = String(challenge.id)
-        //self.titletextView.text = challenge.title
-        
+    class func newInstance(challenge: Challenge) -> DetailsChallengeViewController{
+        let dcvc = DetailsChallengeViewController()
+        dcvc.challenge = challenge
+        return dcvc
     }
 }

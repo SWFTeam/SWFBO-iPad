@@ -59,6 +59,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 DispatchQueue.main.async {
                    let viewTest = ChallengesViewController.newInstance(challenges: challenges)
                     self.stackView.addSubview(viewTest.view)
+                    viewTest.challengesTableView.dataSource = viewTest.dataSource
+                    viewTest.challengesTableView.delegate = viewTest.delegate
+    
                 }
                 /*DispatchQueue.main.async {
                     let testView = ChallengesViewController.newInstance(challenges: challenges)
