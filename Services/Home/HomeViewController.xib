@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y6y-Yv-2RV">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y6y-Yv-2RV">
                     <rect key="frame" x="0.0" y="20" width="300" height="257"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
@@ -28,7 +28,7 @@
                         <constraint firstAttribute="height" constant="257" id="eOW-zJ-WWb"/>
                     </constraints>
                 </tableView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hIl-CQ-UBS">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hIl-CQ-UBS">
                     <rect key="frame" x="340" y="20" width="772" height="257"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
@@ -50,6 +50,7 @@
                 <constraint firstItem="5No-QR-DDW" firstAttribute="top" secondItem="Y6y-Yv-2RV" secondAttribute="bottom" constant="8" id="eY1-7U-b5Q"/>
                 <constraint firstItem="Y6y-Yv-2RV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="fhR-QS-7LQ"/>
                 <constraint firstItem="Y6y-Yv-2RV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nH3-0g-I3A"/>
+                <constraint firstItem="hIl-CQ-UBS" firstAttribute="leading" secondItem="Y6y-Yv-2RV" secondAttribute="trailing" constant="40" id="waU-OV-zgt"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="140.28776978417267" y="139.56834532374103"/>

@@ -12,6 +12,8 @@
 		4D142B66247C2FD8000EE55D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D142B65247C2FD8000EE55D /* Assets.xcassets */; };
 		4D142B69247C2FD8000EE55D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D142B68247C2FD8000EE55D /* Preview Assets.xcassets */; };
 		4D142B6C247C2FD8000EE55D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D142B6A247C2FD8000EE55D /* LaunchScreen.storyboard */; };
+		4D20A61424A64B10008D7F79 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D20A61224A64B10008D7F79 /* UsersViewController.swift */; };
+		4D20A61524A64B10008D7F79 /* UsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D20A61324A64B10008D7F79 /* UsersViewController.xib */; };
 		4D381D5B247F146400C9896E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D381D59247F146400C9896E /* RegisterViewController.swift */; };
 		4D381D5C247F146400C9896E /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D381D5A247F146400C9896E /* RegisterViewController.xib */; };
 		4D381D5F247F149700C9896E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D381D5E247F149700C9896E /* User.swift */; };
@@ -34,6 +36,11 @@
 		4D79E8712486F7320012D9AB /* ChallengeWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D79E8702486F7320012D9AB /* ChallengeWebService.swift */; };
 		4D7B1DD12489912B0072B2B6 /* DetailsChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B1DCF2489912B0072B2B6 /* DetailsChallengeViewController.swift */; };
 		4D7B1DD22489912B0072B2B6 /* DetailsChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B1DD02489912B0072B2B6 /* DetailsChallengeViewController.xib */; };
+		4D7DFC9724A51C6A006DFA21 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DFC9624A51C6A006DFA21 /* SplitViewController.swift */; };
+		4D7DFC9F24A5FED9006DFA21 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DFC9D24A5FED9006DFA21 /* UsersTableViewController.swift */; };
+		4D7DFCA024A5FED9006DFA21 /* UsersTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7DFC9E24A5FED9006DFA21 /* UsersTableViewController.xib */; };
+		4D7DFCA724A6279A006DFA21 /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DFCA524A6279A006DFA21 /* UsersTableViewCell.swift */; };
+		4D7DFCA824A6279A006DFA21 /* UsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7DFCA624A6279A006DFA21 /* UsersTableViewCell.xib */; };
 		4DB3109B2489972B0017A2A6 /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB3109A2489972B0017A2A6 /* Description.swift */; };
 		4DB3109D2489990C0017A2A6 /* DescriptionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB3109C2489990C0017A2A6 /* DescriptionFactory.swift */; };
 		4DD9AF2124882F4A00928AAB /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9AF1F24882F4A00928AAB /* MenuTableViewCell.swift */; };
@@ -58,6 +65,8 @@
 		4D142B68247C2FD8000EE55D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4D142B6B247C2FD8000EE55D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D142B6D247C2FD8000EE55D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D20A61224A64B10008D7F79 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		4D20A61324A64B10008D7F79 /* UsersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersViewController.xib; sourceTree = "<group>"; };
 		4D381D59247F146400C9896E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		4D381D5A247F146400C9896E /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		4D381D5E247F149700C9896E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -80,6 +89,11 @@
 		4D79E8702486F7320012D9AB /* ChallengeWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeWebService.swift; sourceTree = "<group>"; };
 		4D7B1DCF2489912B0072B2B6 /* DetailsChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsChallengeViewController.swift; sourceTree = "<group>"; };
 		4D7B1DD02489912B0072B2B6 /* DetailsChallengeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsChallengeViewController.xib; sourceTree = "<group>"; };
+		4D7DFC9624A51C6A006DFA21 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		4D7DFC9D24A5FED9006DFA21 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		4D7DFC9E24A5FED9006DFA21 /* UsersTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersTableViewController.xib; sourceTree = "<group>"; };
+		4D7DFCA524A6279A006DFA21 /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
+		4D7DFCA624A6279A006DFA21 /* UsersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersTableViewCell.xib; sourceTree = "<group>"; };
 		4DB3109A2489972B0017A2A6 /* Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
 		4DB3109C2489990C0017A2A6 /* DescriptionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionFactory.swift; sourceTree = "<group>"; };
 		4DD9AF1F24882F4A00928AAB /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -152,12 +166,14 @@
 		4D381D53247F13C000C9896E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4D7DFC9824A5FEA8006DFA21 /* Users */,
 				4DD9AF1E24882F2B00928AAB /* Navigation */,
 				4D79E8632486F2300012D9AB /* Challenges */,
 				BBDBB5A324854D0800D50227 /* Home */,
 				4D381D58247F144500C9896E /* User */,
 				4D381D70248196FB00C9896E /* LoginViewController.swift */,
 				4D381D71248196FB00C9896E /* LoginViewController.xib */,
+				4D7DFC9624A51C6A006DFA21 /* SplitViewController.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -218,6 +234,19 @@
 			path = Challenges;
 			sourceTree = "<group>";
 		};
+		4D7DFC9824A5FEA8006DFA21 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				4D7DFC9D24A5FED9006DFA21 /* UsersTableViewController.swift */,
+				4D7DFC9E24A5FED9006DFA21 /* UsersTableViewController.xib */,
+				4D7DFCA524A6279A006DFA21 /* UsersTableViewCell.swift */,
+				4D7DFCA624A6279A006DFA21 /* UsersTableViewCell.xib */,
+				4D20A61224A64B10008D7F79 /* UsersViewController.swift */,
+				4D20A61324A64B10008D7F79 /* UsersViewController.xib */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
 		4DD9AF1E24882F2B00928AAB /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,8 +256,16 @@
 				4DD9AF242488315200928AAB /* MenuViewController.xib */,
 			);
 			path = Navigation;
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
+		8384D47E08395A34684D587F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0660E5A924A02FA5E179A303 /* Pods_SWFBO.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BBDBB5A324854D0800D50227 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,14 +279,6 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-        8384D47E08395A34684D587F /* Frameworks */ = {
-            isa = PBXGroup;
-            children = (
-                0660E5A924A02FA5E179A303 /* Pods_SWFBO.framework */,
-            );
-            name = Frameworks;
-            sourceTree = "<group>";
-        };
 		C0A1C0F6283B40D97224A46E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,8 +356,11 @@
 				4D381D5C247F146400C9896E /* RegisterViewController.xib in Resources */,
 				4D381D73248196FB00C9896E /* LoginViewController.xib in Resources */,
 				4D142B69247C2FD8000EE55D /* Preview Assets.xcassets in Resources */,
+				4D7DFCA824A6279A006DFA21 /* UsersTableViewCell.xib in Resources */,
+				4D20A61524A64B10008D7F79 /* UsersViewController.xib in Resources */,
 				4D7B1DD22489912B0072B2B6 /* DetailsChallengeViewController.xib in Resources */,
 				4DD9AF262488315200928AAB /* MenuViewController.xib in Resources */,
+				4D7DFCA024A5FED9006DFA21 /* UsersTableViewController.xib in Resources */,
 				4DD9AF2224882F4A00928AAB /* MenuTableViewCell.xib in Resources */,
 				4D381D7724829DF800C9896E /* HomeViewController.xib in Resources */,
 				4D142B66247C2FD8000EE55D /* Assets.xcassets in Resources */,
@@ -393,12 +425,15 @@
 				4D79E86D2486F2B50012D9AB /* Challenge.swift in Sources */,
 				BBDBB5A624854D1F00D50227 /* UserTableViewCell.swift in Sources */,
 				4D142B60247C2FD5000EE55D /* AppDelegate.swift in Sources */,
+				4D7DFC9724A51C6A006DFA21 /* SplitViewController.swift in Sources */,
 				4D381D7624829DF800C9896E /* HomeViewController.swift in Sources */,
+				4D7DFC9F24A5FED9006DFA21 /* UsersTableViewController.swift in Sources */,
 				4DD9AF252488315200928AAB /* MenuViewController.swift in Sources */,
 				4D381D66247F154700C9896E /* UserFactory.swift in Sources */,
 				BBAA8F9724880F36001B729D /* APIWebService.swift in Sources */,
 				4D381D6F248165C500C9896E /* Database.swift in Sources */,
 				4D142B62247C2FD5000EE55D /* SceneDelegate.swift in Sources */,
+				4D20A61424A64B10008D7F79 /* UsersViewController.swift in Sources */,
 				4DB3109B2489972B0017A2A6 /* Description.swift in Sources */,
 				4D381D5F247F149700C9896E /* User.swift in Sources */,
 				4D7B1DD12489912B0072B2B6 /* DetailsChallengeViewController.swift in Sources */,
@@ -406,6 +441,7 @@
 				4DB3109D2489990C0017A2A6 /* DescriptionFactory.swift in Sources */,
 				4D381D5B247F146400C9896E /* RegisterViewController.swift in Sources */,
 				4D79E86A2486F2960012D9AB /* ChallengeTableViewCell.swift in Sources */,
+				4D7DFCA724A6279A006DFA21 /* UsersTableViewCell.swift in Sources */,
 				BBAA8F9424880217001B729D /* APITableViewCell.swift in Sources */,
 				4D381D72248196FB00C9896E /* LoginViewController.swift in Sources */,
 				4D381D6A248059EB00C9896E /* addressFactory.swift in Sources */,

@@ -23,7 +23,6 @@ class UserFactory {
         
         if(id != nil){
             let user = User(id: id!, firstname: firstname, lastname: lastname, email: email, password: password, birthday: birthday, last_login_at: last_login_at, created_at: created_at, isAdmin: true)
-            print(user)
             return user
         } else {
             return User(id: id!, firstname: firstname, lastname: lastname, email: email, password: password, birthday: birthday, last_login_at: last_login_at, created_at: created_at, isAdmin: true)

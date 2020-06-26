@@ -12,8 +12,10 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
     
     var challenges: [Challenge]!
     @IBOutlet var challengesTableView: UITableView!
-    var dataSource: UITableViewDataSource!
+    var dataSource: UITableViewDataSource?
     var delegate: UITableViewDelegate!
+    let challengeWebService: ChallengeWebService = ChallengeWebService()
+    var token: String!
     
     enum Identifier: String{
         case challenges
@@ -21,7 +23,7 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(touchEdit))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(touchEdit))
         self.challengesTableView.register(UINib(nibName: "ChallengeTableViewCell", bundle: nil), forCellReuseIdentifier: "ChallengeTableViewCell")
         self.challengesTableView.dataSource = self // data list listener
         self.challengesTableView.delegate = self // user events listener
@@ -30,16 +32,32 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
         self.delegate = self.challengesTableView.delegate
     }
     
-    /*@objc func touchEdit() {
+    @objc func touchEdit() {
         UIView.animate(withDuration: 0.33){
-            self.tableView.isEditing = !self.tableView.isEditing
+            self.challengesTableView.isEditing = !self.challengesTableView.isEditing
         }
-    }*/
+    }
     
-    class func newInstance(challenges: [Challenge]) -> ChallengesViewController {
+    
+    class func newInstance(token: String, challenges: [Challenge]) -> ChallengesViewController {
         let cvc = ChallengesViewController()
         cvc.challenges = challenges
+        cvc.token = token
+        cvc.dataSource = cvc
+        cvc.delegate = cvc
         return cvc
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let challenges = self.challenges[indexPath.row]
+       /* self.challengeWebService.removeScooter(scooter: scooter) { (success) in
+            if success {
+                self.scooters.remove(at: indexPath.row)
+                DispatchQueue.main.sync {
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                }
+            }
+        }*/
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

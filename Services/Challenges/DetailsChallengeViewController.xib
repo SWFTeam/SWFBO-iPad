@@ -9,10 +9,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsChallengeViewController" customModule="SWFBO" customModuleProvider="target">
             <connections>
-                <outlet property="descriptiontextView" destination="bVx-rc-4YN" id="w1H-Rr-wfD"/>
-                <outlet property="idLabel" destination="0rY-Xm-lWA" id="3Vj-Rc-l1H"/>
+                <outlet property="countryCodePicker" destination="IkI-Gn-qZO" id="Pq2-uP-OeW"/>
+                <outlet property="descriptionTextView" destination="bVx-rc-4YN" id="wQj-jM-iNU"/>
+                <outlet property="idLabel" destination="0rY-Xm-lWA" id="tAj-Y2-S14"/>
                 <outlet property="nameTextView" destination="Vig-aB-dnW" id="hn0-PJ-w4e"/>
-                <outlet property="titletextView" destination="Rkh-ku-HvU" id="M3F-SK-Gdu"/>
+                <outlet property="titleTextField" destination="cbA-pX-hxn" id="Bho-B4-GoB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,18 +22,13 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-ku-HvU">
-                    <rect key="frame" x="100" y="300" width="824" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vig-aB-dnW">
-                    <rect key="frame" x="100" y="354" width="824" height="31"/>
+                    <rect key="frame" x="86" y="492" width="824" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bVx-rc-4YN">
-                    <rect key="frame" x="100" y="405" width="824" height="150"/>
+                    <rect key="frame" x="86" y="532" width="824" height="150"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="iKB-pY-Ubg"/>
@@ -49,27 +45,31 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="IkI-Gn-qZO">
-                    <rect key="frame" x="305" y="575" width="414" height="216"/>
+                    <rect key="frame" x="305" y="210" width="414" height="216"/>
                 </pickerView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cbA-pX-hxn">
+                    <rect key="frame" x="86" y="448" width="824" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="IkI-Gn-qZO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="305" id="5ky-Uo-VLh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0rY-Xm-lWA" secondAttribute="trailing" constant="100" id="E2N-mj-hns"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vig-aB-dnW" secondAttribute="trailing" constant="100" id="FJm-Dt-qP5"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Rkh-ku-HvU" secondAttribute="trailing" constant="100" id="KZe-zo-HHc"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="IkI-Gn-qZO" secondAttribute="bottom" constant="575" id="Kjm-Ay-DTp"/>
-                <constraint firstItem="Vig-aB-dnW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="100" id="PHN-ga-byq"/>
-                <constraint firstItem="bVx-rc-4YN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="100" id="UXb-JW-4ha"/>
-                <constraint firstItem="Rkh-ku-HvU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="300" id="VsW-oH-02x"/>
+                <constraint firstItem="cbA-pX-hxn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="86" id="I9L-a5-Gsx"/>
+                <constraint firstItem="bVx-rc-4YN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="86" id="O4U-Tm-MvS"/>
+                <constraint firstItem="IkI-Gn-qZO" firstAttribute="top" secondItem="0rY-Xm-lWA" secondAttribute="bottom" constant="50" id="PsO-ch-feD"/>
+                <constraint firstItem="bVx-rc-4YN" firstAttribute="top" secondItem="Vig-aB-dnW" secondAttribute="bottom" constant="6" id="RNq-lg-9iS"/>
+                <constraint firstItem="Vig-aB-dnW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="86" id="XUZ-1X-Fj7"/>
                 <constraint firstItem="0rY-Xm-lWA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="100" id="Xw9-tQ-UQJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cbA-pX-hxn" secondAttribute="trailing" constant="114" id="Z17-oZ-Pao"/>
                 <constraint firstItem="0rY-Xm-lWA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="aPu-4R-IZA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IkI-Gn-qZO" secondAttribute="trailing" constant="305" id="azQ-iL-HAm"/>
-                <constraint firstItem="Vig-aB-dnW" firstAttribute="top" secondItem="Rkh-ku-HvU" secondAttribute="bottom" constant="20" id="d4r-ft-K8r"/>
-                <constraint firstItem="Rkh-ku-HvU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="100" id="lcp-We-Hw8"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bVx-rc-4YN" secondAttribute="trailing" constant="100" id="nuS-TT-cGN"/>
-                <constraint firstItem="IkI-Gn-qZO" firstAttribute="top" secondItem="bVx-rc-4YN" secondAttribute="bottom" constant="20" id="oa0-za-7Gi"/>
-                <constraint firstItem="bVx-rc-4YN" firstAttribute="top" secondItem="Vig-aB-dnW" secondAttribute="bottom" constant="20" id="taz-QV-iNo"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vig-aB-dnW" secondAttribute="trailing" constant="114" id="e7w-EE-Dgr"/>
+                <constraint firstItem="Vig-aB-dnW" firstAttribute="top" secondItem="cbA-pX-hxn" secondAttribute="bottom" constant="10" id="lV4-gf-AhK"/>
+                <constraint firstItem="cbA-pX-hxn" firstAttribute="top" secondItem="IkI-Gn-qZO" secondAttribute="bottom" constant="22" id="npi-Yy-jWN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bVx-rc-4YN" secondAttribute="trailing" constant="114" id="oTi-9D-HOk"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="132" y="124"/>

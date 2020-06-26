@@ -36,9 +36,10 @@ class LoginViewController: UIViewController {
                             db.insert(id: 0, firstname: userComplete.firstname!, lastname: userComplete.lastname!, email: user.email, token: user.token)
                             user.firstname = userComplete.firstname
                             user.lastname = userComplete.lastname
+                            print(user.token)
                             DispatchQueue.main.async {
-                                let homePage = MenuViewController.newInstance(user: user)
-                                self.navigationController?.pushViewController(homePage, animated: true)
+                                /*let svc = SplitViewController.newInstance(user: user)
+                                self.navigationController?.pushViewController(svc, animated: true)*/
                             }
                             /*DispatchQueue.main.async {
                                 let homePage = HomeViewController.newInstance(user: user)

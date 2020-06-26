@@ -43,35 +43,40 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let entry = self.entries[indexPath.row]
+        let navController = UINavigationController()
         /**
          *TODO
          *Place self.stackView.addArrangedSubview(view.view) only one tilme after switch statements
          */
         switch entry {
         case "Home":
-            let user = db.selectWhereId(id: 1)
+            let user = self.user
             var homeView = HomeViewController()
-            homeView = HomeViewController.newInstance(user: user)
+            homeView = HomeViewController.newInstance(user: user!)
             /*homeView.userTableView.dataSource = homeView.userDataSource
             homeView.userTableView.delegate = homeView.userDelegate*/
-            
-            self.stackView.addSubview(homeView.view)
+            navController.viewControllers = [homeView]
+            self.showDetailViewController(navController, sender: self)
             break
         case "Challenges":
             challengeWebService.getAllChallenges(token: self.user.token) { (challenges) in
                 DispatchQueue.main.async {
-                   let viewTest = ChallengesViewController.newInstance(challenges: challenges)
-                    self.stackView.addSubview(viewTest.view)
-                    viewTest.challengesTableView.dataSource = viewTest.dataSource
-                    viewTest.challengesTableView.delegate = viewTest.delegate
+                    let challengesView = ChallengesViewController.newInstance(token: self.user.token, challenges: challenges)
+                    navController.viewControllers = [challengesView]
+                    self.showDetailViewController(navController, sender: self)
                 }
-                /*DispatchQueue.main.async {
-                    let testView = ChallengesViewController.newInstance(challenges: challenges)
-                    self.navigationController?.pushViewController(testView, animated: true)
-                }*/
             }
             break
         case "Users":
+            let uws = UserWebService()
+            uws.getAllUsers(user: self.user) { (users) in
+                DispatchQueue.main.async {
+                    let usersView = UsersViewController.newInstance(users: users)
+                    navController.viewControllers = [usersView]
+                    self.showDetailViewController(navController, sender: self)
+                }
+            }
+            
             break
         case "Events":
             break

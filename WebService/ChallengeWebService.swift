@@ -86,6 +86,27 @@ class ChallengeWebService {
         task.resume()
     }
     
+    func removeChallenge(token: String, id: Int, completion: @escaping(Bool) -> Void ) -> Void {
+        guard let deleteURL = URL(string: self.endpoint + "/challenge") else {
+            return;
+        }
+        var challenge: Challenge!
+        var request: URLRequest = URLRequest(url: deleteURL)
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        let json: [String: Any] = [ "id": id ]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        request.httpBody = jsonData
+        request.httpMethod = "DELETE"
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, res, err) in
+            guard let bytes = data,
+                err == nil else {
+                    return
+            }
+            print(res?.description)
+        })
+    }
+    
     func updateChallenge(token: String, completion: @escaping(Challenge) -> Void ) -> Void {
         guard let challengeURL = URL(string: self.endpoint + "challenge") else {
             return;
