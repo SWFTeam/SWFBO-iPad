@@ -20,24 +20,24 @@
             <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y6y-Yv-2RV">
-                    <rect key="frame" x="0.0" y="20" width="300" height="257"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y6y-Yv-2RV">
+                    <rect key="frame" x="0.0" y="20" width="300" height="100"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="HQQ-B1-8N4"/>
-                        <constraint firstAttribute="height" constant="257" id="eOW-zJ-WWb"/>
+                        <constraint firstAttribute="height" constant="100" id="hKC-kk-3OW"/>
                     </constraints>
                 </tableView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hIl-CQ-UBS">
-                    <rect key="frame" x="340" y="20" width="772" height="257"/>
+                    <rect key="frame" x="340" y="20" width="772" height="100"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="257" id="1zQ-1o-LMY"/>
+                        <constraint firstAttribute="height" constant="100" id="1zQ-1o-LMY"/>
                         <constraint firstAttribute="width" constant="772" id="PCT-4y-5DO"/>
                     </constraints>
                 </tableView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5No-QR-DDW">
-                    <rect key="frame" x="0.0" y="285" width="1112" height="549"/>
+                    <rect key="frame" x="0.0" y="128" width="1112" height="706"/>
                 </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

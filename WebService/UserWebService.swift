@@ -10,6 +10,7 @@ import Foundation
 
 class UserWebService {
     let token: String = "nil"
+    let endpoint: String = "http://localhost:3000/localhost"
     
     func register(user: User, completion: @escaping (Bool) -> Void) -> Void {
         guard let signinURL = URL(string: "http://localhost:3000/bo/signin")
@@ -127,5 +128,15 @@ class UserWebService {
             completion(user)
         }
         task.resume()
+    }
+    
+    func deleteUser(user: User, completion: @escaping(User) -> Void) -> Void {
+        guard let deleteUrl = URL(string: String(self.endpoint + "/user"))
+            else {
+                return;
+        }
+        var request = URLRequest(url: deleteUrl)
+        request.addValue(user.getToken(), forHTTPHeaderField: "Authorization")
+        
     }
 }

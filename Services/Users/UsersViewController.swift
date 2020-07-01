@@ -18,12 +18,18 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(touchEdit))
         self.usersTableView.register(UINib(nibName: "UsersTableViewCell", bundle: nil), forCellReuseIdentifier: "UserViewCell")
         self.usersTableView.dataSource = self
         self.usersTableView.delegate = self
-        //self.usersTableView.contentInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 30);
         self.dataSource = self.usersTableView.dataSource
         self.delegate = self.usersTableView.delegate
+    }
+    
+    @objc func touchEdit() {
+        UIView.animate(withDuration: 0.33){
+            self.usersTableView.isEditing = !self.usersTableView.isEditing
+        }
     }
 
     class func newInstance(users: [User]) -> UsersViewController{
@@ -32,6 +38,11 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
         utvc.dataSource = utvc
         utvc.delegate = utvc
         return utvc
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let user = self.users[indexPath.section]
+       
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,5 +71,9 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.layer.cornerRadius = 5
         cell.indentationLevel = 2
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(self.users[indexPath.section])
     }
 }
