@@ -10,8 +10,10 @@ import UIKit
 
 class ChallengesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var challenges: [Challenge]!
     @IBOutlet var challengesTableView: UITableView!
+    
+    let refreshControl = UIRefreshControl()
+    var challenges: [Challenge]!
     var dataSource: UITableViewDataSource?
     var delegate: UITableViewDelegate!
     let cws: ChallengeWebService = ChallengeWebService()
@@ -29,7 +31,12 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
         self.challengesTableView.register(UINib(nibName: "ChallengeTableViewCell", bundle: nil), forCellReuseIdentifier: "ChallengeTableViewCell")
         self.challengesTableView.dataSource = self // data list listener
         self.challengesTableView.delegate = self // user events listener
-        
+        if #available(iOS 10.0, *) {
+            self.challengesTableView.refreshControl = refreshControl
+        } else {
+            self.challengesTableView.addSubview(refreshControl)
+        }
+        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.dataSource = self.challengesTableView.dataSource
         self.delegate = self.challengesTableView.delegate
     }
@@ -41,6 +48,17 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
     @objc func touchEdit() {
         UIView.animate(withDuration: 0.33){
             self.challengesTableView.isEditing = !self.challengesTableView.isEditing
+        }
+    }
+    
+    @objc func refresh() {
+        cws.getAllChallenges(token: self.user.token) { (challenges) in
+            DispatchQueue.main.sync {
+                print(self.challenges.count)
+                self.challenges = challenges
+                self.challengesTableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
         }
     }
     
