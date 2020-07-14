@@ -8,23 +8,21 @@
 
 import Foundation
 
-class Description: Codable, CustomStringConvertible {
+class Description: Codable {
     
     var id: Int
     var countryCode: String
     var title: String
     var name: String
-    var descr: String
+    var description: String
+    var type: String
     
-    init(id: Int, countryCode: String, title: String, name: String, descr: String) {
+    init(id: Int, countryCode: String, title: String, name: String, descr: String, type: String) {
         self.id = id
         self.countryCode = countryCode
         self.title = title
         self.name = name
-        self.descr = descr
-    }
-    
-    var description: String {
-        return "\(self.id) - \(self.countryCode) - \(self.title) - \(self.name) - \(self.descr)"
+        self.description = descr
+        self.type = type
     }
 }

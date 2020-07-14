@@ -10,7 +10,7 @@ import Foundation
 
 class UserWebService {
     let token: String = "nil"
-    let endpoint: String = "http://localhost:3000/localhost"
+    let endpoint: String = "http://192.168.1.24:3000"
     
     func register(user: User, completion: @escaping (Bool) -> Void) -> Void {
         guard let signinURL = URL(string: "http://localhost:3000/bo/signin")
@@ -37,7 +37,7 @@ class UserWebService {
     }
     
     func getAllUsers(user: User, completion: @escaping ([User]) -> Void) -> Void {
-        guard let usersURL = URL(string: "http://localhost:3000/bo/users") else {
+        guard let usersURL = URL(string: "http://192.168.1.24:3000/bo/users") else {
             return;
         }
         var request: URLRequest = URLRequest(url: usersURL)
@@ -66,7 +66,7 @@ class UserWebService {
     }
     
     func login(user: User, completion: @escaping(User) -> Void) -> Void {
-        guard let loginUrl = URL(string: "http://localhost:3000/bo/signin") else {
+        guard let loginUrl = URL(string: "http://192.168.1.24:3000/bo/signin") else {
             return;
         }
         var request = URLRequest(url: loginUrl)
@@ -94,7 +94,7 @@ class UserWebService {
     }
     
     func getAdditionnalData(user: User, completion: @escaping(User) -> Void) -> Void {
-        guard let userURL = URL(string: "http://localhost:3000/bo/user") else {
+        guard let userURL = URL(string: "http://192.168.1.24:3000/bo/user") else {
             return;
         }
         var request = URLRequest(url: userURL)
@@ -130,13 +130,34 @@ class UserWebService {
         task.resume()
     }
     
-    func deleteUser(user: User, completion: @escaping(User) -> Void) -> Void {
+    func deleteUser(user: User, userId: Int, completion: @escaping(Int) -> Void) -> Void {
         guard let deleteUrl = URL(string: String(self.endpoint + "/user"))
             else {
                 return;
         }
+        print(deleteUrl)
+        var resultCode: Int = 0
         var request = URLRequest(url: deleteUrl)
         request.addValue(user.getToken(), forHTTPHeaderField: "Authorization")
+        let json: [String: Any] = [ "userId": userId ]
+        print(json)
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
+        request.httpBody = jsonData
+        request.httpMethod = "DELETE"
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
+        let task = URLSession.shared.dataTask(with: request){data, response, error in
+            if let error = error {
+                print("error: \(error)")
+                return
+            }
+            if let httpRes = response as? HTTPURLResponse {
+                resultCode = httpRes.statusCode
+                print(resultCode)
+            }
+
+            completion(resultCode)
+        }
+        task.resume()
     }
 }

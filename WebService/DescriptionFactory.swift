@@ -15,7 +15,8 @@ class DescriptionFactory {
         let title = dictionnary["title"] as? String
         let name = dictionnary["name"] as? String
         let description = dictionnary["description"] as? String
+        let type = dictionnary["type"] as? String
         
-        return Description(id: id!, countryCode: countryCode!, title: title!, name: name!, descr: description!)
+        return Description(id: id!, countryCode: countryCode!, title: title!, name: name!, descr: description!, type: type!)
     }
 }

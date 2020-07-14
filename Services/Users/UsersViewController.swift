@@ -10,9 +10,11 @@ import UIKit
 
 class UsersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var user: User!
     var users: [User]!
     var dataSource: UITableViewDataSource?
     var delegate: UITableViewDelegate!
+    let uws: UserWebService = UserWebService()
     
     @IBOutlet var usersTableView: UITableView!
     
@@ -31,18 +33,30 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.usersTableView.isEditing = !self.usersTableView.isEditing
         }
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let user: User = self.users[indexPath.section]
+        self.uws.deleteUser(user: self.user, userId: user.id!) { (code) in
+            if(code == 200){
+                DispatchQueue.main.sync {
+                    print(self.usersTableView.numberOfSections)
+                    self.usersTableView.beginUpdates()
+                    self.users.remove(at: indexPath.section)
+                    self.usersTableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
+                    self.usersTableView.endUpdates()
+                }
+            }
+        }
+    }
 
-    class func newInstance(users: [User]) -> UsersViewController{
+    class func newInstance(user: User, users: [User]) -> UsersViewController{
         let utvc = UsersViewController()
+        utvc.user = user
         utvc.users = users
         utvc.dataSource = utvc
         utvc.delegate = utvc
         return utvc
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let user = self.users[indexPath.section]
-       
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -13,6 +13,10 @@ class DetailsChallengeViewController: UIViewController, UIPickerViewDelegate, UI
     var challenge: Challenge!
     var countryCodes: [String] = [String]()
     var selectedCountryCode: String!
+    var user: User!
+    let cws: ChallengeWebService = ChallengeWebService()
+    var index: Int = 0
+    var keyboardVisible = false
 
     @IBOutlet var idLabel: UILabel!
     @IBOutlet var nameTextView: UITextField!
@@ -20,17 +24,46 @@ class DetailsChallengeViewController: UIViewController, UIPickerViewDelegate, UI
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var countryCodePicker: UIPickerView!
     
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height / 2
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Update", style: .plain, target: self, action: #selector(update))
+        self.navigationItem.title = "Challenge"
         self.countryCodePicker.delegate = self
         self.countryCodePicker.dataSource = self
         setDisplay()
         // Do any additional setup after loading the view.
     }
     
-    class func newInstance(challenge: Challenge) -> DetailsChallengeViewController{
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if self.keyboardVisible == true {
+            self.view.endEditing(true) // close all user interaction
+            self.keyboardVisible = false
+        }
+    }
+    
+    class func newInstance(user: User, challenge: Challenge) -> DetailsChallengeViewController{
         let dcvc = DetailsChallengeViewController()
         dcvc.challenge = challenge
+        dcvc.user = user
         return dcvc
     }
     
@@ -39,6 +72,16 @@ class DetailsChallengeViewController: UIViewController, UIPickerViewDelegate, UI
             self.countryCodes.append(descr.countryCode)
         }
         setText(index: 0)
+    }
+    
+    @objc func update() {
+        self.challenge.descriptions[self.index].description = self.descriptionTextView.text!
+        self.challenge.descriptions[self.index].title = self.titleTextField.text!
+        self.challenge.descriptions[self.index].name = self.nameTextView.text!
+        print(self.challenge.descriptions[self.index].title)
+        cws.updateChallenge(token: self.user.token, challenge: self.challenge) { (resCode) in
+            print("res => ", resCode)
+        }
     }
     
     func setText(index: Int){
@@ -52,6 +95,7 @@ class DetailsChallengeViewController: UIViewController, UIPickerViewDelegate, UI
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.selectedCountryCode = self.countryCodes[row]
         setText(index: row)
+        self.index = row
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -64,5 +108,18 @@ class DetailsChallengeViewController: UIViewController, UIPickerViewDelegate, UI
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return self.countryCodes.count
+    }
+}
+
+extension DetailsChallengeViewController: UITextFieldDelegate {
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.keyboardVisible = true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.keyboardVisible = false
+        return false
     }
 }

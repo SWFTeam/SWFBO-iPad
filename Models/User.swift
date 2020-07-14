@@ -80,4 +80,5 @@ class User: Codable, CustomStringConvertible{
     var description: String {
         return "{\(self.firstname ?? "nil") - \(self.lastname ?? "nil") - \(self.email) - \(self.password ?? "nil") - \(self.isAdmin) - \(self.token) }"
     }
+
 }

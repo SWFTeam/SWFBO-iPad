@@ -10,7 +10,7 @@ import Foundation
 
 class ChallengeWebService {
     
-    let endpoint: String = "http://localhost:3000/"
+    let endpoint: String = "http://192.168.1.24:3000/"
     
     /*func getChallengebyId(token: String, id: Int, completion: @escaping(Challenge) -> Void) -> Void {
         guard let challengeURL = URL(string: self.endpoint + "challenge") else {
@@ -107,10 +107,82 @@ class ChallengeWebService {
         })
     }
     
-    func updateChallenge(token: String, completion: @escaping(Challenge) -> Void ) -> Void {
+    func updateChallenge(token: String, challenge: Challenge, completion: @escaping(Int) -> Void ) -> Void {
         guard let challengeURL = URL(string: self.endpoint + "challenge") else {
             return;
         }
+        var resultCode: Int = 0
         var request: URLRequest = URLRequest(url: challengeURL)
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        let jsonEncoder = JSONEncoder()
+        jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
+        let jsonData = try? jsonEncoder.encode(challenge)
+        //print(String(data: jsonData!, encoding: .utf8)) //debugging purpose
+        request.httpBody = jsonData
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, res, err) in
+            if let error = err {
+                print ("error: \(error)")
+                return
+            }
+            if let httpRes = res as? HTTPURLResponse {
+                resultCode = httpRes.statusCode
+            }
+            completion(resultCode)
+        })
+        task.resume()
+    }
+    
+    func createChallenge(token: String, challenge: Challenge, completion: @escaping(Int) -> Void ) -> Void {
+        guard let challengeURL = URL(string: self.endpoint + "bo/challenge") else {
+            return;
+        }
+        var resultCode: Int = 0
+        var request: URLRequest = URLRequest(url: challengeURL)
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        let jsonEncoder = JSONEncoder()
+        jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
+        let jsonData = try? jsonEncoder.encode(challenge)
+        //print(String(data: jsonData!, encoding: .utf8)) //debugging purpose
+        request.httpBody = jsonData
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, res, err) in
+            if let error = err {
+                print ("error: \(error)")
+                return
+            }
+            if let httpRes = res as? HTTPURLResponse {
+                resultCode = httpRes.statusCode
+            }
+            completion(resultCode)
+        })
+        task.resume()
+    }
+    
+    func deleteChallenge(user: User, challenge: Challenge, completion: @escaping(Int) -> Void ) -> Void {
+        guard let challengeURL = URL(string: self.endpoint + "challenge" ) else {
+            return;
+        }
+        var resultCode = 0;
+        var request: URLRequest = URLRequest(url: challengeURL)
+        request.addValue(user.token, forHTTPHeaderField: "Authorization")
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try? jsonEncoder.encode(["id": challenge.id])
+        request.httpBody = jsonData
+        request.httpMethod = "DELETE"
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, res, err) in
+            if let error = err {
+                print("error: \(error)")
+                return
+            }
+            if let httpRes = res as? HTTPURLResponse {
+                resultCode = httpRes.statusCode
+            }
+            completion(resultCode)
+        })
+        task.resume()
     }
 }

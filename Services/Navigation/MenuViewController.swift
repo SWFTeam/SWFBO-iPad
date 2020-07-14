@@ -22,6 +22,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.menuTableView.register(UINib(nibName: "MenuTableViewCell", bundle: nil), forCellReuseIdentifier: "MenuTableViewCell")
         self.menuTableView.dataSource = self // data list listener
         self.menuTableView.delegate = self // user events listener
+        self.navigationItem.title = "Navigation";
     }
 
     class func newInstance(user: User) -> MenuViewController {
@@ -61,7 +62,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         case "Challenges":
             challengeWebService.getAllChallenges(token: self.user.token) { (challenges) in
                 DispatchQueue.main.async {
-                    let challengesView = ChallengesViewController.newInstance(token: self.user.token, challenges: challenges)
+                    let challengesView = ChallengesViewController.newInstance(user: self.user, challenges: challenges)
                     navController.viewControllers = [challengesView]
                     self.showDetailViewController(navController, sender: self)
                 }
@@ -71,7 +72,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let uws = UserWebService()
             uws.getAllUsers(user: self.user) { (users) in
                 DispatchQueue.main.async {
-                    let usersView = UsersViewController.newInstance(users: users)
+                    let usersView = UsersViewController.newInstance(user: self.user, users: users)
                     navController.viewControllers = [usersView]
                     self.showDetailViewController(navController, sender: self)
                 }
