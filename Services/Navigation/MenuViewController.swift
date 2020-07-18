@@ -14,7 +14,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet var stackView: UIStackView!
     let db: DBHelper = DBHelper()
     let challengeWebService: ChallengeWebService = ChallengeWebService()
-    let entries: [String] = ["Home", "Users", "Events", "Challenges"]
+    let entries: [String] = ["Home", "Users", "Events", "Challenges", "Advices"]
     var user: User!
     
     override func viewDidLoad() {
@@ -80,7 +80,24 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             break
         case "Events":
+            let ews = EventWebService()
+            ews.getAllEvents(user: self.user, completion: { (events) in
+                DispatchQueue.main.sync {
+                    let eventsView = EventsViewController.newInstance(user: self.user, events: events)
+                    navController.viewControllers = [eventsView]
+                    self.showDetailViewController(navController, sender: self)
+                }
+            })
             break
+        case "Advices":
+            let aws = AdviceWebService()
+            aws.getAllAdvices(user: self.user) { (advices) in
+                DispatchQueue.main.sync {
+                    let advicesView = AdvicesViewController.newInstance(user: self.user, advices: advices)
+                    navController.viewControllers = [advicesView]
+                    self.showDetailViewController(navController, sender: self)
+                }
+            }
         default:
             break
         }

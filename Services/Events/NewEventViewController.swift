@@ -8,23 +8,173 @@
 
 import UIKit
 
-class NewEventViewController: UIViewController {
+class NewEventViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource{
 
+    @IBOutlet var countryCodePicker: UIPickerView!
+    @IBOutlet var beginDatePicker: UIDatePicker!
+    @IBOutlet var endDatePicker: UIDatePicker!
+    @IBOutlet var addCountryCodeButton: UIButton!
+    @IBOutlet var titleTextField: UITextField!
+    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var expTextField: UITextField!
+    @IBOutlet var descriptionTextView: UITextView!
+    @IBOutlet var saveButton: UIButton!
+    @IBOutlet var createButton: UIButton!
+    
+    var user: User!
+    let ews: EventWebService = EventWebService()
+    var countryCodes: [String] = ["FR", "GB"]
+    var selectedCode: String!
+    var descriptions: [Description] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationItem.title = "Create new event"
+        self.countryCodePicker.delegate = self
+        self.countryCodePicker.dataSource = self
+        self.selectedCode = self.countryCodes[0]
+        self.expTextField.keyboardType = .numberPad
+        self.descriptionTextView.layer.borderWidth = 1
+        self.descriptionTextView.layer.cornerRadius = 5
+        self.beginDatePicker.datePickerMode = UIDatePicker.Mode.date
+        self.endDatePicker.datePickerMode = UIDatePicker.Mode.date
+        
+        self.saveButton.addTarget(self, action: #selector(saveDescription), for: .touchUpInside)
+        self.createButton.addTarget(self, action: #selector(createAction), for: .touchUpInside)
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    class func newInstance(user: User) -> NewEventViewController {
+        let nevc = NewEventViewController()
+        nevc.user = user
+        return nevc
     }
-    */
+    
+    @objc func saveDescription() -> Void {
+        addDescription(countryCode: selectedCode)
+    }
+    
+    @objc func createAction() {
+        let exp = Int(self.expTextField.text!) ?? 0
+        let tmp_address: Address = Address(id: 0, country: "France", city: "Saint-Aubin", street: "7 rue du vieux lavoir", zipCode: 91190, nbHouse: 7, complement: "")
+        let beginDate = getDate(which: "begin")
+        let endDate = getDate(which: "end")
+        let event: Event = Event(id: 0, date_start: beginDate, date_end: endDate, experience: exp, descriptions: self.descriptions, address: tmp_address)
+        ews.createEvent(user: self.user, event: event) { (resultCode) in
+            DispatchQueue.main.sync {
+                if resultCode == 201 {
+                    self.showToast(message: "Created successfully: " + String(resultCode), font: .systemFont(ofSize: 12.0))
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.showToast(message: "Error during creation: " + String(resultCode), font: .systemFont(ofSize: 12.0))
+                }
+            }
+        }
+        
+    }
+    
+    @objc func addCountryCodeAction() -> Void {
+        let alert = UIAlertController(title: "Add countryCode", message: "New countryCode", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "CountryCode"
+        }
+        alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { [weak alert] (_) in
+            var code = alert?.textFields![0].text
+            if(code != ""){
+                code = code!.uppercased()
+                self.countryCodes.append(code!)
+                self.countryCodePicker.reloadAllComponents()
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func getDescription() -> Description {
+        let countryCode = self.selectedCode;
+        let title = self.titleTextField.text
+        let name = self.nameTextField.text
+        let descr = self.descriptionTextView.text
+        let description = Description(id: 0, countryCode: countryCode!, title: title!, name: name!, descr: descr!, type: "event")
+        return description
+    }
+    
+    func addDescription(countryCode: String){
+        if(self.titleTextField.text != "" && self.nameTextField.text != "" && self.descriptionTextView.text != "" && countryCode != ""){
+            //Remove from descriptions table if already in it
+            var index: Int = 0
+            for des in self.descriptions {
+                if(des.countryCode == countryCode){
+                    self.descriptions.remove(at: index)
+                }
+                index += 1
+            }
+            let description = getDescription()
+            self.descriptions.append(description)
+            self.showToast(message: "Saved.", font: .systemFont(ofSize: 12.0))
+        } else {
+            self.showToast(message: "Missing parameter(s)", font: .systemFont(ofSize: 12.0))
+        }
+    }
+    
+    func setDisplay(description: Description){
+        self.titleTextField.text = description.title
+        self.nameTextField.text = description.name
+        self.descriptionTextView.text = description.description
+    }
+    
+    func clearFields(){
+        self.titleTextField.text = ""
+        self.nameTextField.text = ""
+        self.descriptionTextView.text = ""
+    }
+    
+    func getDate(which: String) -> String {
+        var datePicker: UIDatePicker!
+        if which == "begin" {
+            datePicker = self.beginDatePicker
+        } else if which == "end" {
+            datePicker = self.endDatePicker
+        }
+        datePicker.datePickerMode = UIDatePicker.Mode.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        let selectedDate = dateFormatter.string(from: datePicker.date)
+        return selectedDate
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.countryCodes.count
+    }
 
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.countryCodes[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let description = getDescription()
+        if !self.descriptions.contains(description){
+            let alert = UIAlertController(title: "Careful", message: "Not saved", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (_) in
+                self.countryCodePicker.selectRow(self.countryCodes.firstIndex(of: description.countryCode)!, inComponent: component, animated: true)
+                return
+            }))
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
+                
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.selectedCode = self.countryCodes[row]
+            clearFields()
+            for description in self.descriptions {
+                if(description.countryCode == self.countryCodes[row]){
+                    setDisplay(description: description)
+                    print(description.countryCode)
+                }
+            }
+        }
+    }
 }

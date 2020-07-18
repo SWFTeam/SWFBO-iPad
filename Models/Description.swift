@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Description: Codable {
+class Description: Codable, Equatable {
     
     var id: Int
     var countryCode: String
@@ -24,5 +24,13 @@ class Description: Codable {
         self.name = name
         self.description = descr
         self.type = type
+    }
+    
+    static func == (lhs: Description, rhs: Description) -> Bool {
+        if(lhs.id == rhs.id && lhs.countryCode == rhs.countryCode && lhs.name == rhs.name && lhs.description == rhs.description && lhs.type == rhs.type){
+            return true
+        } else {
+            return false
+        }
     }
 }

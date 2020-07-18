@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Address {
+class Address: Codable {
     var id: Int
     var country: String
     var city: String
@@ -16,9 +16,9 @@ class Address {
     var zipCode: Int
     var nbHouse: Int
     var complement: String
-    var createdAt: String
+    var createdAt: String!
     
-    init(id: Int, country: String, city: String, street: String, zipCode: Int, nbHouse: Int, complement: String, created_at: String){
+    init(id: Int, country: String, city: String, street: String, zipCode: Int, nbHouse: Int, complement: String){
         self.id = id
         self.country = country
         self.city = city
@@ -26,6 +26,5 @@ class Address {
         self.zipCode = zipCode
         self.nbHouse = nbHouse
         self.complement = complement
-        self.createdAt = created_at
     }
 }
