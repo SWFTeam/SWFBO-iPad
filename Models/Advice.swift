@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+class Advice {
+    
+    var id: Int
+    var descriptions: [Description]
+    
+    init(id: Int, descriptions: [Description]) {
+        self.id = id
+        self.descriptions = descriptions
+    }
+}
