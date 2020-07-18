@@ -12,10 +12,12 @@ class Challenge: Codable, CustomStringConvertible {
     
     var id: Int
     var descriptions: [Description]
+    var experience: Int
     
-    init(id: Int, descriptions: [Description]) {
+    init(id: Int, experience: Int, descriptions: [Description]) {
         self.id = id
         self.descriptions = descriptions
+        self.experience = experience
     }
     
     var description: String {

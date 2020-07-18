@@ -41,7 +41,7 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
         self.delegate = self.challengesTableView.delegate
     }
     
-    @objc func touchNew(){
+    @objc func touchNew() {
         newChallenge()
     }
     
@@ -98,8 +98,6 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
         let entry = self.challenges[indexPath.row]
         let dcvc = DetailsChallengeViewController.newInstance(user: self.user, challenge: entry)
         self.navigationController?.pushViewController(dcvc, animated: true)
-        print(self.navigationController.debugDescription)
-        print("CLICKED", entry)
     }
     
     func newChallenge(){

@@ -8,10 +8,8 @@
 
 import Foundation
 
-class ChallengeWebService {
-    
-    let endpoint: String = "http://192.168.1.24:3000/"
-    
+class ChallengeWebService: WebService {
+        
     /*func getChallengebyId(token: String, id: Int, completion: @escaping(Challenge) -> Void) -> Void {
         guard let challengeURL = URL(string: self.endpoint + "challenge") else {
             return;
@@ -69,6 +67,7 @@ class ChallengeWebService {
                     return nil
                 }
                 var challenge: Challenge!
+                let experience = dict["experience"] as! Int
                 let descrs = dict["description"] as! [Any]
                 var descriptions: [Description] = [Description]()
                 let challId: Int = (dict["id"] as? Int)!
@@ -78,7 +77,7 @@ class ChallengeWebService {
                     }
                     descriptions.append(DescriptionFactory.descriptionFrom(dictionnary: dico))
                 }
-                challenge = Challenge(id: challId, descriptions: descriptions)
+                challenge = Challenge(id: challId, experience: experience, descriptions: descriptions)
                 return challenge
             }
             completion(challenges)
@@ -88,9 +87,8 @@ class ChallengeWebService {
     
     func removeChallenge(token: String, id: Int, completion: @escaping(Bool) -> Void ) -> Void {
         guard let deleteURL = URL(string: self.endpoint + "/challenge") else {
-            return;
+            return
         }
-        var challenge: Challenge!
         var request: URLRequest = URLRequest(url: deleteURL)
         request.addValue(token, forHTTPHeaderField: "Authorization")
         let json: [String: Any] = [ "id": id ]
@@ -98,13 +96,14 @@ class ChallengeWebService {
         request.httpBody = jsonData
         request.httpMethod = "DELETE"
         request.setValue("application/json", forHTTPHeaderField: "content-type")
-        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, res, err) in
-            guard let bytes = data,
-                err == nil else {
-                    return
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (_, res, err) in
+            if err == nil {
+                completion(true)
+            } else {
+                completion(false)
             }
-            print(res?.description)
         })
+        task.resume()
     }
     
     func updateChallenge(token: String, challenge: Challenge, completion: @escaping(Int) -> Void ) -> Void {

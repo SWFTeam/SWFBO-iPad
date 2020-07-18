@@ -23,6 +23,7 @@ class DetailsChallengeViewController: UIViewController, UIPickerViewDelegate, UI
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var countryCodePicker: UIPickerView!
+    @IBOutlet var expTextField: UITextField!
     
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -49,8 +50,8 @@ class DetailsChallengeViewController: UIViewController, UIPickerViewDelegate, UI
         self.navigationItem.title = "Challenge"
         self.countryCodePicker.delegate = self
         self.countryCodePicker.dataSource = self
+        self.expTextField.keyboardType = .numberPad
         setDisplay()
-        // Do any additional setup after loading the view.
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -71,6 +72,7 @@ class DetailsChallengeViewController: UIViewController, UIPickerViewDelegate, UI
         self.challenge.descriptions.forEach { (descr) in
             self.countryCodes.append(descr.countryCode)
         }
+        self.expTextField.text = String(self.challenge.experience)
         setText(index: 0)
     }
     
@@ -78,9 +80,15 @@ class DetailsChallengeViewController: UIViewController, UIPickerViewDelegate, UI
         self.challenge.descriptions[self.index].description = self.descriptionTextView.text!
         self.challenge.descriptions[self.index].title = self.titleTextField.text!
         self.challenge.descriptions[self.index].name = self.nameTextView.text!
-        print(self.challenge.descriptions[self.index].title)
+        self.challenge.experience = Int(self.expTextField.text!) ?? 0
         cws.updateChallenge(token: self.user.token, challenge: self.challenge) { (resCode) in
-            print("res => ", resCode)
+            DispatchQueue.main.sync {
+                if resCode == 200 {
+                    self.showToast(message: "Updated successfully: " + String(resCode), font: .systemFont(ofSize: 12.0))
+                } else {
+                    self.showToast(message: "Error during update: " + String(resCode), font: .systemFont(ofSize: 12.0))
+                }
+            }
         }
     }
     
