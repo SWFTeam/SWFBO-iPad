@@ -8,12 +8,11 @@
 
 import Foundation
 
-class UserWebService {
+class UserWebService: WebService {
     let token: String = "nil"
-    let endpoint: String = "http://192.168.1.24:3000"
     
     func register(user: User, completion: @escaping (Bool) -> Void) -> Void {
-        guard let signinURL = URL(string: "http://localhost:3000/bo/signin")
+        guard let signinURL = URL(string: self.endpoint + "bo/signin")
                 else{
                     return;
                 }
@@ -37,7 +36,7 @@ class UserWebService {
     }
     
     func getAllUsers(user: User, completion: @escaping ([User]) -> Void) -> Void {
-        guard let usersURL = URL(string: "http://192.168.1.24:3000/bo/users") else {
+        guard let usersURL = URL(string: self.endpoint + "bo/users") else {
             return;
         }
         var request: URLRequest = URLRequest(url: usersURL)
@@ -66,7 +65,7 @@ class UserWebService {
     }
     
     func login(user: User, completion: @escaping(User) -> Void) -> Void {
-        guard let loginUrl = URL(string: "http://192.168.1.24:3000/bo/signin") else {
+        guard let loginUrl = URL(string: self.endpoint + "bo/signin") else {
             return;
         }
         var request = URLRequest(url: loginUrl)
@@ -94,7 +93,7 @@ class UserWebService {
     }
     
     func getAdditionnalData(user: User, completion: @escaping(User) -> Void) -> Void {
-        guard let userURL = URL(string: "http://192.168.1.24:3000/bo/user") else {
+        guard let userURL = URL(string: self.endpoint + "bo/user") else {
             return;
         }
         var request = URLRequest(url: userURL)
@@ -131,7 +130,7 @@ class UserWebService {
     }
     
     func deleteUser(user: User, userId: Int, completion: @escaping(Int) -> Void) -> Void {
-        guard let deleteUrl = URL(string: String(self.endpoint + "/user"))
+        guard let deleteUrl = URL(string: String(self.endpoint + "user"))
             else {
                 return;
         }

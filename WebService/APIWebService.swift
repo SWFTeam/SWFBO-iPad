@@ -8,7 +8,7 @@
 
 import Foundation
 
-class APIWebService {
+class APIWebService: WebService {
     
     struct Status:Codable {
         var mysql_status: String?
@@ -20,7 +20,7 @@ class APIWebService {
     func getStatus(completion: @escaping(Status) -> Void) -> Void {
         
         // Create URL
-        let url = URL(string: "http://192.168.1.24:3000/status")
+        let url = URL(string: self.endpoint + "status")
         guard let requestUrl = url else { fatalError() }
 
         // Create URL Request

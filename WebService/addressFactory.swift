@@ -17,15 +17,14 @@ class AddressFactory {
             let street = dictionnary["street"] as? String,
             let zipCode = dictionnary["zipCode"] as? Int,
             let nbHouse = dictionnary["nbHouse"] as? Int,
-            let complement = dictionnary["complement"] as? String,
-            let created_at = dictionnary["created_at"] as? String else {
+            let complement = dictionnary["complement"] as? String else {
                 return nil
         }
         
         if(id != nil){
-            return Address(id: id!, country: country, city: city, street: street, zipCode: zipCode, nbHouse: nbHouse, complement: complement, created_at: created_at)
+            return Address(id: id!, country: country, city: city, street: street, zipCode: zipCode, nbHouse: nbHouse, complement: complement)
         } else {
-            return Address(id: id!, country: country, city: city, street: street, zipCode: zipCode, nbHouse: nbHouse, complement: complement, created_at: created_at)
+            return Address(id: id!, country: country, city: city, street: street, zipCode: zipCode, nbHouse: nbHouse, complement: complement)
         }
         
     }
