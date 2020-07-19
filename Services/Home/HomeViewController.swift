@@ -29,7 +29,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("HEEEEEEEERERERERER+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
         self.userTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserHomeCell")
         self.userTableView.dataSource = self
         self.userTableView.delegate = self
@@ -42,7 +41,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.apiDataSource = self
         self.apiDelegate = self
 
-        // Do any additional setup after loading the view.
+        self.navigationItem.title = "Home"
     }
     
     class func newInstance(user: User) -> HomeViewController{

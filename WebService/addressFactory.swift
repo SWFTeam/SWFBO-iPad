@@ -10,6 +10,7 @@ import Foundation
 
 class AddressFactory {
     static func userFrom(dictionnary: [String: Any]) -> Address? {
+        
         let id: Int? = dictionnary["id"] as? Int
         
         guard let country = dictionnary["country"] as? String,

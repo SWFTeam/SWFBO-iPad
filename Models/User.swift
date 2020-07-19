@@ -17,9 +17,8 @@ class User: Codable, CustomStringConvertible{
     var birthday: String?
     var last_login_at: String!
     var created_at: String!
-    /*var address: Address
-    var addressWork: Address
-    var survey: Survey*/
+    var address: Address!
+    var addressWork: Address!
     var isAdmin: Bool = false
     var token: String = "nil"
     
@@ -78,7 +77,13 @@ class User: Codable, CustomStringConvertible{
     }
     
     var description: String {
-        return "{\(self.firstname ?? "nil") - \(self.lastname ?? "nil") - \(self.email) - \(self.password ?? "nil") - \(self.isAdmin) - \(self.token) }"
+        var string: String = ""
+        if self.address != nil {
+            string = "{\(self.firstname ?? "nil") - \(self.lastname ?? "nil") - \(self.email) - \(self.password ?? "nil") - \(self.isAdmin) - \(self.token) - city: \(self.address.city)}"
+        } else {
+            string = "{\(self.firstname ?? "nil") - \(self.lastname ?? "nil") - \(self.email) - \(self.password ?? "nil") - \(self.isAdmin) - token:\(self.token) }"
+        }
+        return string
     }
 
 }

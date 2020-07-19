@@ -88,6 +88,7 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(self.users[indexPath.section])
+        let udvc = UserDetailsViewController.newInstance(user: self.users[indexPath.section])
+        self.navigationController?.pushViewController(udvc, animated: true)
     }
 }

@@ -59,6 +59,8 @@
 		4D8925DB24C367B400EF6ADA /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8925D924C367B400EF6ADA /* NewEventViewController.swift */; };
 		4D8925DC24C367B400EF6ADA /* NewEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8925DA24C367B400EF6ADA /* NewEventViewController.xib */; };
 		4D8925DE24C39F0000EF6ADA /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8925DD24C39F0000EF6ADA /* WebService.swift */; };
+		4D8925E124C463DA00EF6ADA /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8925DF24C463DA00EF6ADA /* UserDetailsViewController.swift */; };
+		4D8925E224C463DA00EF6ADA /* UserDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8925E024C463DA00EF6ADA /* UserDetailsViewController.xib */; };
 		4DB3109B2489972B0017A2A6 /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB3109A2489972B0017A2A6 /* Description.swift */; };
 		4DB3109D2489990C0017A2A6 /* DescriptionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB3109C2489990C0017A2A6 /* DescriptionFactory.swift */; };
 		4DD9AF2124882F4A00928AAB /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9AF1F24882F4A00928AAB /* MenuTableViewCell.swift */; };
@@ -130,6 +132,8 @@
 		4D8925D924C367B400EF6ADA /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
 		4D8925DA24C367B400EF6ADA /* NewEventViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewEventViewController.xib; sourceTree = "<group>"; };
 		4D8925DD24C39F0000EF6ADA /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		4D8925DF24C463DA00EF6ADA /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
+		4D8925E024C463DA00EF6ADA /* UserDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailsViewController.xib; sourceTree = "<group>"; };
 		4DB3109A2489972B0017A2A6 /* Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
 		4DB3109C2489990C0017A2A6 /* DescriptionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionFactory.swift; sourceTree = "<group>"; };
 		4DD9AF1F24882F4A00928AAB /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -285,6 +289,8 @@
 				4D7DFCA624A6279A006DFA21 /* UsersTableViewCell.xib */,
 				4D20A61224A64B10008D7F79 /* UsersViewController.swift */,
 				4D20A61324A64B10008D7F79 /* UsersViewController.xib */,
+				4D8925DF24C463DA00EF6ADA /* UserDetailsViewController.swift */,
+				4D8925E024C463DA00EF6ADA /* UserDetailsViewController.xib */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -434,6 +440,7 @@
 				4D20A61524A64B10008D7F79 /* UsersViewController.xib in Resources */,
 				4D7B1DD22489912B0072B2B6 /* DetailsChallengeViewController.xib in Resources */,
 				4DD9AF262488315200928AAB /* MenuViewController.xib in Resources */,
+				4D8925E224C463DA00EF6ADA /* UserDetailsViewController.xib in Resources */,
 				4D8925DC24C367B400EF6ADA /* NewEventViewController.xib in Resources */,
 				4D02B1C424BDFE19004983F8 /* NewChallengeViewController.xib in Resources */,
 				4DD9AF2224882F4A00928AAB /* MenuTableViewCell.xib in Resources */,
@@ -524,6 +531,7 @@
 				4DB3109B2489972B0017A2A6 /* Description.swift in Sources */,
 				4D381D5F247F149700C9896E /* User.swift in Sources */,
 				4D7B1DD12489912B0072B2B6 /* DetailsChallengeViewController.swift in Sources */,
+				4D8925E124C463DA00EF6ADA /* UserDetailsViewController.swift in Sources */,
 				4D8925C024BFB8B500EF6ADA /* EventTableViewCell.swift in Sources */,
 				4D381D64247F153800C9896E /* UserWebService.swift in Sources */,
 				4DB3109D2489990C0017A2A6 /* DescriptionFactory.swift in Sources */,

@@ -48,6 +48,10 @@ class EventDetailsViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Update", style: .plain, target: self, action: #selector(update))
         self.countryCodesPicker.delegate = self
         self.countryCodesPicker.dataSource = self
+        
+        self.descriptionTextView.layer.borderWidth = 1
+        self.descriptionTextView.layer.cornerRadius = 5
+        
         setDisplay()
     }
     

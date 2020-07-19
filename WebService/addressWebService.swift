@@ -11,7 +11,7 @@ import Foundation
 class AddressWebService: WebService {
             
     func getAddressById(user: User, id: Int, completion: @escaping(Address) -> Void ) -> Void {
-        guard let addressURL = URL(string: self.endpoint + "address/" + String(id)) else {
+        guard let addressURL = URL(string: self.endpoint + "addresses/" + String(id)) else {
             return
         }
         
@@ -23,6 +23,7 @@ class AddressWebService: WebService {
                     return
             }
             guard let json = try? JSONSerialization.jsonObject(with: bytes, options: .allowFragments) as? [String: Any] else {
+                print("JSON PARSING FAILED")
                 return
             }
             if let dictionnary = json as? [String: Any] {

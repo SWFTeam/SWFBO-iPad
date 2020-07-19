@@ -46,6 +46,9 @@ class DetailsChallengeViewController: UIViewController, UIPickerViewDelegate, UI
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        self.descriptionTextView.layer.borderWidth = 1
+        self.descriptionTextView.layer.cornerRadius = 5
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Update", style: .plain, target: self, action: #selector(update))
         self.navigationItem.title = "Challenge"
         self.countryCodePicker.delegate = self

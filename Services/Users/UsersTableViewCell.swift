@@ -15,7 +15,6 @@ class UsersTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("HERE")
         // Initialization code
     }
 

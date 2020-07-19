@@ -92,7 +92,7 @@ class EventWebService: WebService {
     }
     
     func createEvent(user: User, event: Event, completion: @escaping(Int) -> Void) -> Void {
-        guard let eventURL = URL(string: self.endpoint + "bo/advice") else {
+        guard let eventURL = URL(string: self.endpoint + "bo/event") else {
             return
         }
         var resultCode = 0

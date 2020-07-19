@@ -50,12 +50,21 @@ class UserWebService: WebService {
                     }
                 return
             }
-
             let users = json.compactMap { (obj) -> User? in
                 guard let dict = obj as? [String: Any] else {
                     return nil
                 }
-                return UserFactory.userFrom(dictionnary: dict)
+                let usr = UserFactory.userFrom(dictionnary: dict)
+                if (dict["address_id"] != nil) {
+                    print(dict["address_id"]!)
+                    let aws = AddressWebService()
+                    aws.getAddressById(user: user, id: dict["address_id"] as! Int) { (address) in
+                        usr?.address = address
+                        print(usr?.address.city ?? "nil")
+                    }
+                }
+                print(usr)
+                return usr
             }
             DispatchQueue.main.sync {
                 completion(users)
