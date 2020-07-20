@@ -52,12 +52,10 @@ class SplitViewController : UISplitViewController, UISplitViewControllerDelegate
                     if(userRes.token != "nil"){
                         let db:DBHelper = DBHelper()
                         uws.getAdditionnalData(user: user) { (userComplete) in
-                            print(userComplete.isAdmin)
                             if(userComplete.isAdmin){
                                 db.insert(id: 0, firstname: userComplete.firstname!, lastname: userComplete.lastname!, email: user.email, token: user.token)
                                 user.firstname = userComplete.firstname
                                 user.lastname = userComplete.lastname
-                                print(user.token)
                                 self.user = user
                                 DispatchQueue.main.async {
                                     self.master.viewControllers = [MenuViewController.newInstance(user: self.user)]

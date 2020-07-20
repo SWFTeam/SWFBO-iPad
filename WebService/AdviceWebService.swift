@@ -17,8 +17,6 @@ class AdviceWebService: WebService {
         var request: URLRequest = URLRequest(url: advicesURL)
         request.addValue(user.token, forHTTPHeaderField: "Authorization")
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, res, err) in
-            var tmp = res as! HTTPURLResponse
-            print(tmp.statusCode)
             guard let bytes = data,
                 err == nil,
                 let json = try? JSONSerialization.jsonObject(with: bytes, options: .allowFragments) as? [[String: Any]] else {

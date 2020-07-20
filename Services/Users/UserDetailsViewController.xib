@@ -150,8 +150,8 @@
                     <rect key="frame" x="238" y="627" width="672" height="103"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="638" id="0Ji-x7-h8d"/>
                         <constraint firstAttribute="height" constant="103" id="8xx-ai-5HS"/>
-                        <constraint firstAttribute="width" constant="672" id="ugC-sD-tRk"/>
                     </constraints>
                     <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -282,11 +282,11 @@
                 <constraint firstItem="1MC-da-496" firstAttribute="leading" secondItem="W2t-j2-7eZ" secondAttribute="trailing" constant="8" id="iff-yn-YDG"/>
                 <constraint firstItem="ACS-ah-fAL" firstAttribute="top" secondItem="B4Y-fQ-jfb" secondAttribute="bottom" constant="25" id="mQe-E7-XYh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Rcv-8w-U8o" secondAttribute="trailing" constant="114" id="mRm-y6-Wtl"/>
+                <constraint firstItem="yMS-LN-XtJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="238" id="pIJ-Fn-j9p"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yMS-LN-XtJ" secondAttribute="trailing" constant="114" id="rKP-B1-zmC"/>
                 <constraint firstItem="ACS-ah-fAL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="130" id="t0U-ny-fND"/>
                 <constraint firstItem="9yS-R7-82D" firstAttribute="top" secondItem="BAJ-mv-KLP" secondAttribute="bottom" constant="4" id="tSG-fU-aNx"/>
                 <constraint firstItem="xCs-dU-YyP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="130" id="ufK-wO-AXQ"/>
-                <constraint firstItem="yMS-LN-XtJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="238" id="ukX-yO-IOp"/>
                 <constraint firstItem="Zsu-Z7-Lsl" firstAttribute="top" secondItem="Ysg-wd-Jzd" secondAttribute="bottom" constant="12" id="vAS-Xa-BSh"/>
                 <constraint firstItem="B4Y-fQ-jfb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="130" id="yMx-VP-Jlt"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BAJ-mv-KLP" secondAttribute="trailing" constant="114" id="yiY-25-KoM"/>

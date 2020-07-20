@@ -116,7 +116,6 @@ class ChallengeWebService: WebService {
         let jsonEncoder = JSONEncoder()
         jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
         let jsonData = try? jsonEncoder.encode(challenge)
-        //print(String(data: jsonData!, encoding: .utf8)) //debugging purpose
         request.httpBody = jsonData
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "content-type")
@@ -143,7 +142,6 @@ class ChallengeWebService: WebService {
         let jsonEncoder = JSONEncoder()
         jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
         let jsonData = try? jsonEncoder.encode(challenge)
-        //print(String(data: jsonData!, encoding: .utf8)) //debugging purpose
         request.httpBody = jsonData
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "content-type")

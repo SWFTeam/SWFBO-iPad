@@ -172,7 +172,6 @@ class NewEventViewController: UIViewController , UIPickerViewDelegate, UIPickerV
             for description in self.descriptions {
                 if(description.countryCode == self.countryCodes[row]){
                     setDisplay(description: description)
-                    print(description.countryCode)
                 }
             }
         }

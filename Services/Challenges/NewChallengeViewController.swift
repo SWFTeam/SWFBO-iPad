@@ -50,7 +50,6 @@ class NewChallengeViewController: UIViewController, UIPickerViewDelegate, UIPick
         let exp = Int(self.expTextField.text!) ?? 0
         let challenge = Challenge(id: 0, experience: exp, descriptions: self.descriptions)
         cws.createChallenge(token: self.user.token, challenge: challenge) { (resultCode) in
-            print(resultCode)
             DispatchQueue.main.sync {
                 if resultCode == 201 {
                     self.showToast(message: "Created successfully: " + String(resultCode), font: .systemFont(ofSize: 12.0))
@@ -132,7 +131,6 @@ class NewChallengeViewController: UIViewController, UIPickerViewDelegate, UIPick
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let description = getDescription()
         if !self.descriptions.contains(description){
-            print("NOT CONTAINED ")
             let alert = UIAlertController(title: "Careful", message: "Description not saved, abort ?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Stay", style: .default, handler: { (_) in
                 let previousIndex = self.countryCodes.firstIndex(of: description.countryCode)!
@@ -145,14 +143,12 @@ class NewChallengeViewController: UIViewController, UIPickerViewDelegate, UIPick
                 for description in self.descriptions {
                     if(description.countryCode == self.countryCodes[row]){
                         self.setDisplay(description: description)
-                        print(description.countryCode)
                     }
                 }
             }))
             self.present(alert, animated: true, completion: nil)
         } else {
             self.selectedCode = self.countryCodes[row]
-            print(self.selectedCode, " CONTAINED")
             clearFields()
         }
     }

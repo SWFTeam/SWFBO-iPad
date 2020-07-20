@@ -33,7 +33,7 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="1zQ-1o-LMY"/>
-                        <constraint firstAttribute="width" constant="772" id="PCT-4y-5DO"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="650" id="CYl-Aj-0PI"/>
                     </constraints>
                 </tableView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5No-QR-DDW">
@@ -42,6 +42,7 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="Y6y-Yv-2RV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0PJ-Tk-YVV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5No-QR-DDW" secondAttribute="bottom" id="1cF-Su-3HZ"/>
                 <constraint firstItem="hIl-CQ-UBS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="8wl-7b-6EP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5No-QR-DDW" secondAttribute="trailing" id="B4E-EB-imo"/>
@@ -49,7 +50,6 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hIl-CQ-UBS" secondAttribute="trailing" id="KfA-Cd-1Ff"/>
                 <constraint firstItem="5No-QR-DDW" firstAttribute="top" secondItem="Y6y-Yv-2RV" secondAttribute="bottom" constant="8" id="eY1-7U-b5Q"/>
                 <constraint firstItem="Y6y-Yv-2RV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="fhR-QS-7LQ"/>
-                <constraint firstItem="Y6y-Yv-2RV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nH3-0g-I3A"/>
                 <constraint firstItem="hIl-CQ-UBS" firstAttribute="leading" secondItem="Y6y-Yv-2RV" secondAttribute="trailing" constant="40" id="waU-OV-zgt"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

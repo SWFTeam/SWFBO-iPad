@@ -11,7 +11,7 @@ import Foundation
 class AddressWebService: WebService {
             
     func getAddressById(user: User, id: Int, completion: @escaping(Address) -> Void ) -> Void {
-        guard let addressURL = URL(string: self.endpoint + "addresses/" + String(id)) else {
+        guard let addressURL = URL(string: self.endpoint + "address/" + String(id)) else {
             return
         }
         
@@ -43,4 +43,29 @@ class AddressWebService: WebService {
         task.resume()
     }
     
+    func updateAddress(user: User, address: Address, completion: @escaping(Int) -> Void ) -> Void {
+        guard let updateURL = URL(string: self.endpoint + "address") else {
+            return;
+        }
+        var resultCode: Int = 0
+        var request: URLRequest = URLRequest(url: updateURL)
+        request.addValue(user.token, forHTTPHeaderField: "Authorization")
+        let jsonEncoder = JSONEncoder()
+        jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
+        let jsonData = try? jsonEncoder.encode(address)
+        request.httpBody = jsonData
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, res, err) in
+            if let error = err {
+                print ("error: \(error)")
+                return
+            }
+            if let httpRes = res as? HTTPURLResponse {
+                resultCode = httpRes.statusCode
+            }
+            completion(resultCode)
+        })
+        task.resume()
+    }
 }

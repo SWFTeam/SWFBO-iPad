@@ -43,12 +43,6 @@ class APIWebService: WebService {
                 print("Response HTTP Status code: \(response.statusCode)")
             }
             
-            // Convert HTTP Response Data to a status struct
-            /*if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                print("TEST", data[0])
-                print("Response data string:\n \(dataString)")
-                
-            }*/
             if let json = try? JSONDecoder().decode(Status.self, from: data!){
 
                 self.status = json

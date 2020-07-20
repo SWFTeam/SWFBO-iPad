@@ -61,7 +61,6 @@ class EventDetailsViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.event.descriptions[self.index].name = self.nameTextView.text!
         self.ews.updateEvent(user: self.user, event: self.event) { (resultCode) in
             DispatchQueue.main.sync {
-                print(resultCode)
                 if(resultCode == 200){
                     self.showToast(message: "Updated successfully: " + String(resultCode), font: .systemFont(ofSize: 12.0))
                 } else {
@@ -81,7 +80,6 @@ class EventDetailsViewController: UIViewController, UIPickerViewDelegate, UIPick
     func setDisplay() {
         self.event.descriptions.forEach { (descr) in
             self.countryCodes.append(descr.countryCode)
-            print(self.event.descriptions.count)
         }
         setText(index: self.index)
     }

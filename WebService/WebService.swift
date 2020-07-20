@@ -9,5 +9,5 @@
 import Foundation
 
 class WebService {
-    let endpoint: String = "http://192.168.1.24:3000/"
+    var endpoint: String = "http://192.168.1.24:3000/"
 }

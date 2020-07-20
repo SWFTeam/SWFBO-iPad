@@ -38,7 +38,6 @@ class EventWebService: WebService {
                 let date_end: String = dict["date_end"] as! String
                 let addresses = dict["address"] as! [Any]
                 for descr in descrs{
-                    print(descr)
                     guard let dico = descr as? [String: Any] else {
                         return nil
                     }
@@ -78,7 +77,6 @@ class EventWebService: WebService {
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "content-type")
         let task = URLSession.shared.dataTask(with: request, completionHandler: {(data: Data?, res, err) in
-            print("HERE")
             if let error = err {
                 print("error: \(error)")
                 return

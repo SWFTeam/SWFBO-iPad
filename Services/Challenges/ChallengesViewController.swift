@@ -54,7 +54,6 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
     @objc func refresh() {
         cws.getAllChallenges(token: self.user.token) { (challenges) in
             DispatchQueue.main.sync {
-                print(self.challenges.count)
                 self.challenges = challenges
                 self.challengesTableView.reloadData()
                 self.refreshControl.endRefreshing()
@@ -75,7 +74,6 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let challenge = self.challenges[indexPath.row]
         cws.deleteChallenge(user: self.user, challenge: challenge) { (resultCode) in
-            print(resultCode)
             self.challenges.remove(at: indexPath.row)
             DispatchQueue.main.async {
                 self.challengesTableView.deleteRows(at: [indexPath], with: .automatic)

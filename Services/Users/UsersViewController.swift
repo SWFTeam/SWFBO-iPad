@@ -15,6 +15,7 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
     var dataSource: UITableViewDataSource?
     var delegate: UITableViewDelegate!
     let uws: UserWebService = UserWebService()
+    let refreshControl = UIRefreshControl()
     
     @IBOutlet var usersTableView: UITableView!
     
@@ -24,6 +25,12 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.usersTableView.register(UINib(nibName: "UsersTableViewCell", bundle: nil), forCellReuseIdentifier: "UserViewCell")
         self.usersTableView.dataSource = self
         self.usersTableView.delegate = self
+        if #available(iOS 10.0, *) {
+            self.usersTableView.refreshControl = refreshControl
+        } else {
+            self.usersTableView.addSubview(refreshControl)
+        }
+        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.dataSource = self.usersTableView.dataSource
         self.delegate = self.usersTableView.delegate
     }
@@ -34,13 +41,22 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    @objc func refresh() {
+        uws.getAllUsers(user: self.user) { (users) in
+            DispatchQueue.main.async {
+                self.users = users
+                self.usersTableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         let user: User = self.users[indexPath.section]
         self.uws.deleteUser(user: self.user, userId: user.id!) { (code) in
             if(code == 200){
                 DispatchQueue.main.sync {
-                    print(self.usersTableView.numberOfSections)
                     self.usersTableView.beginUpdates()
                     self.users.remove(at: indexPath.section)
                     self.usersTableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
@@ -88,7 +104,7 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let udvc = UserDetailsViewController.newInstance(user: self.users[indexPath.section])
+        let udvc = UserDetailsViewController.newInstance(user: self.user, usr: self.users[indexPath.section])
         self.navigationController?.pushViewController(udvc, animated: true)
     }
 }

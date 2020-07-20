@@ -13,7 +13,6 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet var menuTableView: UITableView!
     @IBOutlet var stackView: UIStackView!
     let db: DBHelper = DBHelper()
-    let challengeWebService: ChallengeWebService = ChallengeWebService()
     let entries: [String] = ["Home", "Users", "Events", "Challenges", "Advices"]
     var user: User!
     
@@ -22,7 +21,26 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.menuTableView.register(UINib(nibName: "MenuTableViewCell", bundle: nil), forCellReuseIdentifier: "MenuTableViewCell")
         self.menuTableView.dataSource = self // data list listener
         self.menuTableView.delegate = self // user events listener
-        self.navigationItem.title = "Navigation";
+        self.navigationItem.title = "Navigation"
+        let settingsButton = UIBarButtonItem(title: String("\u{2699}\u{0000FE0E}"), style: .plain, target: self, action: #selector(settings))
+        let font = UIFont.systemFont(ofSize: 28)
+        let attr = [NSAttributedString.Key.font: font]
+        settingsButton.setTitleTextAttributes(attr, for: .normal)
+        self.navigationItem.leftBarButtonItem = settingsButton
+    }
+    
+    @objc func settings() {
+        let alert = UIAlertController(title: "API Endpoint", message: "SWF API endpoint:", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Endpoint"
+        }
+        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak alert] (_) in
+            let endpoint = alert?.textFields![0].text
+            if(endpoint != ""){
+                
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 
     class func newInstance(user: User) -> MenuViewController {
@@ -60,6 +78,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.showDetailViewController(navController, sender: self)
             break
         case "Challenges":
+            let challengeWebService: ChallengeWebService = ChallengeWebService()
             challengeWebService.getAllChallenges(token: self.user.token) { (challenges) in
                 DispatchQueue.main.async {
                     let challengesView = ChallengesViewController.newInstance(user: self.user, challenges: challenges)

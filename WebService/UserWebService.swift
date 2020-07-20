@@ -56,14 +56,11 @@ class UserWebService: WebService {
                 }
                 let usr = UserFactory.userFrom(dictionnary: dict)
                 if (dict["address_id"] != nil) {
-                    print(dict["address_id"]!)
                     let aws = AddressWebService()
                     aws.getAddressById(user: user, id: dict["address_id"] as! Int) { (address) in
                         usr?.address = address
-                        print(usr?.address.city ?? "nil")
                     }
                 }
-                print(usr)
                 return usr
             }
             DispatchQueue.main.sync {
@@ -143,12 +140,10 @@ class UserWebService: WebService {
             else {
                 return;
         }
-        print(deleteUrl)
         var resultCode: Int = 0
         var request = URLRequest(url: deleteUrl)
         request.addValue(user.getToken(), forHTTPHeaderField: "Authorization")
         let json: [String: Any] = [ "userId": userId ]
-        print(json)
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
         request.httpBody = jsonData
@@ -161,11 +156,36 @@ class UserWebService: WebService {
             }
             if let httpRes = response as? HTTPURLResponse {
                 resultCode = httpRes.statusCode
-                print(resultCode)
             }
 
             completion(resultCode)
         }
+        task.resume()
+    }
+    
+    func updateUser(user: User, update_user: User, completion: @escaping(Int) -> Void ) -> Void {
+        guard let updateURL = URL(string: String(self.endpoint + "user")) else {
+            return
+        }
+        var resultCode = 0
+        var request = URLRequest(url: updateURL)
+        request.addValue(user.token, forHTTPHeaderField: "Authorization")
+        let jsonEncoder = JSONEncoder()
+        jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
+        let jsonData = try? jsonEncoder.encode(update_user)
+        request.httpBody = jsonData
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
+        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data: Data?, res, err) in
+            if let error = err {
+                print("error: \(error)")
+                return
+            }
+            if let httpRes = res as? HTTPURLResponse {
+                resultCode = httpRes.statusCode
+            }
+            completion(resultCode)
+        })
         task.resume()
     }
 }

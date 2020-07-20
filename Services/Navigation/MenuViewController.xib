@@ -19,14 +19,11 @@
             <rect key="frame" x="0.0" y="0.0" width="981" height="1024"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l4n-vt-8Ol">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l4n-vt-8Ol">
                     <rect key="frame" x="0.0" y="20" width="400" height="1004"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="400" id="9cM-qN-FNo"/>
-                    </constraints>
                 </tableView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zRy-c8-kgi">
+                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zRy-c8-kgi">
                     <rect key="frame" x="400" y="20" width="581" height="1024"/>
                     <viewLayoutGuide key="safeArea" id="cl7-P1-upy"/>
                 </stackView>
@@ -34,12 +31,13 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zRy-c8-kgi" secondAttribute="trailing" id="1Pr-QJ-zEV"/>
+                <constraint firstItem="zRy-c8-kgi" firstAttribute="leading" secondItem="l4n-vt-8Ol" secondAttribute="trailing" id="2wZ-3G-xL5"/>
                 <constraint firstAttribute="bottom" secondItem="l4n-vt-8Ol" secondAttribute="bottom" id="Ahh-DQ-Nvu"/>
                 <constraint firstItem="zRy-c8-kgi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="HRk-cm-Raf"/>
                 <constraint firstItem="zRy-c8-kgi" firstAttribute="leading" secondItem="l4n-vt-8Ol" secondAttribute="trailing" id="Uul-K3-eQK"/>
                 <constraint firstItem="l4n-vt-8Ol" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="c2K-d3-BxH"/>
                 <constraint firstItem="zRy-c8-kgi" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="20" id="dXd-Ba-Tng"/>
-                <constraint firstItem="l4n-vt-8Ol" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xD2-ea-fSq"/>
+                <constraint firstItem="l4n-vt-8Ol" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xBy-sZ-VIc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="132" y="154"/>
