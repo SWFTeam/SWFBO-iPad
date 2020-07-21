@@ -27,11 +27,9 @@ class SplitViewController : UISplitViewController, UISplitViewControllerDelegate
         let alert = UIAlertController(title: "Login", message: "Please login to access", preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Email address"
-            textField.text = "blackack91@gmail.com"
         }
         alert.addTextField { (textField) in
             textField.placeholder = "password"
-            textField.text = "password"
             textField.isSecureTextEntry = true
         }
         alert.addAction(UIAlertAction(title: "Login", style: .default, handler: { [weak alert] (_) in
