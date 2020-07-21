@@ -16,6 +16,7 @@ class EventDetailsViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var experienceTextField: UITextField!
     @IBOutlet var descriptionTextView: UITextView!
+    @IBOutlet var addCountryCode: UIButton!
     
     let ews = EventWebService()
     let aws = AddressWebService()
@@ -26,6 +27,8 @@ class EventDetailsViewController: UIViewController, UIPickerViewDelegate, UIPick
     var selectedCountryCode: String!
     var keyboardVisible = false
     var index: Int = 0
+    var selectedCode: String!
+    var descriptions: [Description] = []
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -46,6 +49,9 @@ class EventDetailsViewController: UIViewController, UIPickerViewDelegate, UIPick
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Update", style: .plain, target: self, action: #selector(update))
+        
+        self.addCountryCode.addTarget(self, action: #selector(addCountryCodeAction), for: .touchUpInside)
+        
         self.countryCodesPicker.delegate = self
         self.countryCodesPicker.dataSource = self
         
@@ -53,6 +59,25 @@ class EventDetailsViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.descriptionTextView.layer.cornerRadius = 5
         
         setDisplay()
+        self.selectedCode = self.event.descriptions[0].countryCode
+        addDescription(countryCode: self.event.descriptions[0].countryCode)
+    }
+    
+    @objc func addCountryCodeAction() -> Void {
+        let alert = UIAlertController(title: "Add countryCode", message: "New countryCode", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "CountryCode"
+        }
+        alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { [weak alert] (_) in
+            var code = alert?.textFields![0].text
+            if(code != ""){
+                code = code!.uppercased()
+                self.countryCodes.append(code!)
+                self.countryCodesPicker.reloadAllComponents()
+                self.selectedCode = code
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func update() {
@@ -70,6 +95,33 @@ class EventDetailsViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
+    func addDescription(countryCode: String){
+        if(self.titleTextView.text != "" && self.nameTextView.text != "" && self.descriptionTextView.text != "" && countryCode != ""){
+            //Remove from descriptions table if already in it
+            var index: Int = 0
+            for des in self.descriptions {
+                if(des.countryCode == countryCode){
+                    self.descriptions.remove(at: index)
+                }
+                index += 1
+            }
+            let description = getDescription()
+            self.descriptions.append(description)
+            self.showToast(message: "Saved.", font: .systemFont(ofSize: 12.0))
+        } else {
+            self.showToast(message: "Missing parameter(s)", font: .systemFont(ofSize: 12.0))
+        }
+    }
+    
+    func getDescription() -> Description {
+        let countryCode = self.selectedCode;
+        let title = self.titleTextView.text
+        let name = self.nameTextView.text
+        let descr = self.descriptionTextView.text
+        let description = Description(id: 0, countryCode: countryCode!, title: title!, name: name!, descr: descr!, type: "event")
+        return description
+    }
+    
     class func newInstance(user: User, event: Event) -> EventDetailsViewController{
         let edvc = EventDetailsViewController()
         edvc.user = user
@@ -84,17 +136,30 @@ class EventDetailsViewController: UIViewController, UIPickerViewDelegate, UIPick
         setText(index: self.index)
     }
     
+    func setDisplay(description: Description){
+        self.titleTextView.text = description.title
+        self.nameTextView.text = description.name
+        self.descriptionTextView.text = description.description
+    }
+    
+    func clearFields(){
+        self.titleTextView.text = ""
+        self.nameTextView.text = ""
+        self.descriptionTextView.text = ""
+    }
+    
     func setText(index: Int){
         self.titleLabel.text = self.event.descriptions[index].title + " (" + String(self.event.id) + ")"
         self.titleTextView.text = self.event.descriptions[index].title
         self.nameTextView.text = self.event.descriptions[index].name
         self.descriptionTextView.text = self.event.descriptions[index].description
+        self.experienceTextField.text = String(self.event.experience)
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.selectedCountryCode = self.countryCodes[row]
         self.index = row
-        setText(index: self.index)
+        self.selectedCode = self.event.descriptions[row].countryCode
+        setDisplay()
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

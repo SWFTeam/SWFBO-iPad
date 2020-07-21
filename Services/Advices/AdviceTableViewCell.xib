@@ -17,22 +17,34 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7v-du-bIC">
-                        <rect key="frame" x="10" y="10" width="42" height="21"/>
+                        <rect key="frame" x="65" y="10" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="advice" translatesAutoresizingMaskIntoConstraints="NO" id="7TR-2L-ESO">
+                        <rect key="frame" x="5" y="5" width="50" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="q4f-J3-nyL"/>
+                            <constraint firstAttribute="width" constant="50" id="zuX-Vi-3WC"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="F7v-du-bIC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="icl-lq-jEY"/>
-                    <constraint firstItem="F7v-du-bIC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="mGR-no-61F"/>
+                    <constraint firstItem="F7v-du-bIC" firstAttribute="leading" secondItem="7TR-2L-ESO" secondAttribute="trailing" constant="10" id="IJF-vA-IfO"/>
+                    <constraint firstItem="F7v-du-bIC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Ok3-h2-9s2"/>
+                    <constraint firstItem="7TR-2L-ESO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ryK-Qy-gPJ"/>
+                    <constraint firstItem="7TR-2L-ESO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="wSl-rC-HUO"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="adviceNameLabel" destination="F7v-du-bIC" id="dwt-Zm-dkb"/>
             </connections>
-            <point key="canvasLocation" x="141" y="111"/>
+            <point key="canvasLocation" x="140.57971014492756" y="110.49107142857143"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="advice" width="512" height="512"/>
+    </resources>
 </document>

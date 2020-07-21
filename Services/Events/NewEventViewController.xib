@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewEventViewController" customModule="SWFBO" customModuleProvider="target">
             <connections>
+                <outlet property="addAddress" destination="mBH-qc-75o" id="kHK-pJ-BjJ"/>
                 <outlet property="addCountryCodeButton" destination="Fus-i1-5RU" id="Rkd-l7-GGa"/>
                 <outlet property="beginDatePicker" destination="ssx-oP-Uxc" id="mTA-KA-q38"/>
                 <outlet property="countryCodePicker" destination="ad2-Sz-uei" id="XhE-BZ-4LQ"/>
@@ -116,7 +117,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAP-Fl-R8V">
-                    <rect key="frame" x="683" y="791" width="72" height="22"/>
+                    <rect key="frame" x="690" y="791" width="72" height="22"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <state key="normal" title="Create" image="arrow.up.doc.fill" catalog="system">
                         <color key="titleColor" red="0.1764705882" green="0.52549019610000003" blue="0.87058823529999996" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
@@ -137,14 +138,19 @@
                     </constraints>
                 </datePicker>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkN-72-aXw">
-                    <rect key="frame" x="601" y="791" width="63" height="22"/>
+                    <rect key="frame" x="601" y="791" width="70" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="63" id="yIg-G7-Vku"/>
+                        <constraint firstAttribute="width" constant="70" id="yIg-G7-Vku"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <state key="normal" title="Save" image="paperplane.fill" catalog="system">
                         <color key="titleColor" red="0.1764705882" green="0.52549019610000003" blue="0.87058823529999996" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBH-qc-75o">
+                    <rect key="frame" x="285" y="791" width="97" height="33"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Add address"/>
                 </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -158,6 +164,7 @@
                 <constraint firstItem="ad2-Sz-uei" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="GTt-9a-HWm"/>
                 <constraint firstItem="fES-nP-2Tr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="I9g-YQ-3Yi"/>
                 <constraint firstItem="ad2-Sz-uei" firstAttribute="leading" secondItem="fES-nP-2Tr" secondAttribute="trailing" constant="13" id="IAa-Je-4kL"/>
+                <constraint firstItem="mBH-qc-75o" firstAttribute="top" secondItem="334-c7-jxx" secondAttribute="bottom" constant="8" id="Ig6-KS-pqO"/>
                 <constraint firstItem="X6M-Jb-XDl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="227" id="JkZ-aL-5cy"/>
                 <constraint firstItem="VY2-0j-nrx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="227" id="PA7-v4-51i"/>
                 <constraint firstItem="Wgs-fu-KED" firstAttribute="leading" secondItem="X6M-Jb-XDl" secondAttribute="trailing" constant="16" id="Q4r-pS-a1j"/>
@@ -166,6 +173,7 @@
                 <constraint firstItem="dkN-72-aXw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="601" id="Uml-nl-Zkd"/>
                 <constraint firstItem="X6M-Jb-XDl" firstAttribute="top" secondItem="fES-nP-2Tr" secondAttribute="bottom" constant="124" id="V1e-4N-9ho"/>
                 <constraint firstItem="EBd-C1-OSY" firstAttribute="leading" secondItem="Riq-FK-h68" secondAttribute="trailing" constant="4" id="WxD-1x-Lv6"/>
+                <constraint firstItem="mBH-qc-75o" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="285" id="Xtj-zN-NLN"/>
                 <constraint firstItem="xAP-Fl-R8V" firstAttribute="top" secondItem="334-c7-jxx" secondAttribute="bottom" constant="8" id="Zvf-Pd-IBM"/>
                 <constraint firstItem="EBd-C1-OSY" firstAttribute="top" secondItem="Wgs-fu-KED" secondAttribute="bottom" constant="18" id="ZxP-PT-Ex4"/>
                 <constraint firstItem="334-c7-jxx" firstAttribute="top" secondItem="7Kz-VT-H9J" secondAttribute="bottom" constant="20" id="b4i-19-NG6"/>

@@ -28,6 +28,8 @@
 		4D381D6F248165C500C9896E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D381D6E248165C500C9896E /* Database.swift */; };
 		4D381D7624829DF800C9896E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D381D7424829DF800C9896E /* HomeViewController.swift */; };
 		4D381D7724829DF800C9896E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D381D7524829DF800C9896E /* HomeViewController.xib */; };
+		4D5CBBC524C63CF6000A320A /* NewAdviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5CBBC324C63CF6000A320A /* NewAdviceViewController.swift */; };
+		4D5CBBC624C63CF6000A320A /* NewAdviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D5CBBC424C63CF6000A320A /* NewAdviceViewController.xib */; };
 		4D79E8662486F26F0012D9AB /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D79E8642486F26F0012D9AB /* ChallengesViewController.swift */; };
 		4D79E8672486F26F0012D9AB /* ChallengesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D79E8652486F26F0012D9AB /* ChallengesViewController.xib */; };
 		4D79E86A2486F2960012D9AB /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D79E8682486F2960012D9AB /* ChallengeTableViewCell.swift */; };
@@ -101,6 +103,8 @@
 		4D381D6E248165C500C9896E /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		4D381D7424829DF800C9896E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Services/Home/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		4D381D7524829DF800C9896E /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = Services/Home/HomeViewController.xib; sourceTree = SOURCE_ROOT; };
+		4D5CBBC324C63CF6000A320A /* NewAdviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAdviceViewController.swift; sourceTree = "<group>"; };
+		4D5CBBC424C63CF6000A320A /* NewAdviceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewAdviceViewController.xib; sourceTree = "<group>"; };
 		4D79E8642486F26F0012D9AB /* ChallengesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		4D79E8652486F26F0012D9AB /* ChallengesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengesViewController.xib; sourceTree = "<group>"; };
 		4D79E8682486F2960012D9AB /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
@@ -319,6 +323,8 @@
 				4D8925D024C251B600EF6ADA /* AdviceTableViewCell.xib */,
 				4D8925D324C25CE600EF6ADA /* AdviceDetailsViewController.swift */,
 				4D8925D424C25CE600EF6ADA /* AdviceDetailsViewController.xib */,
+				4D5CBBC324C63CF6000A320A /* NewAdviceViewController.swift */,
+				4D5CBBC424C63CF6000A320A /* NewAdviceViewController.xib */,
 			);
 			path = Advices;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 				4D7B1DD22489912B0072B2B6 /* DetailsChallengeViewController.xib in Resources */,
 				4DD9AF262488315200928AAB /* MenuViewController.xib in Resources */,
 				4D8925E224C463DA00EF6ADA /* UserDetailsViewController.xib in Resources */,
+				4D5CBBC624C63CF6000A320A /* NewAdviceViewController.xib in Resources */,
 				4D8925DC24C367B400EF6ADA /* NewEventViewController.xib in Resources */,
 				4D02B1C424BDFE19004983F8 /* NewChallengeViewController.xib in Resources */,
 				4DD9AF2224882F4A00928AAB /* MenuTableViewCell.xib in Resources */,
@@ -514,6 +521,7 @@
 				4D79E86D2486F2B50012D9AB /* Challenge.swift in Sources */,
 				4D8925DE24C39F0000EF6ADA /* WebService.swift in Sources */,
 				BBDBB5A624854D1F00D50227 /* UserTableViewCell.swift in Sources */,
+				4D5CBBC524C63CF6000A320A /* NewAdviceViewController.swift in Sources */,
 				4D8925D824C3643500EF6ADA /* Toast.swift in Sources */,
 				4D8925BD24BFB3D500EF6ADA /* EventWebService.swift in Sources */,
 				4D142B60247C2FD5000EE55D /* AppDelegate.swift in Sources */,

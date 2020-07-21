@@ -41,7 +41,11 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    @objc func refresh() {
+    public func test() {
+        
+    }
+    
+    @objc override func refresh() {
         uws.getAllUsers(user: self.user) { (users) in
             DispatchQueue.main.async {
                 self.users = users
@@ -104,7 +108,13 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let udvc = UserDetailsViewController.newInstance(user: self.user, usr: self.users[indexPath.section])
+        let udvc = UserDetailsViewController.newInstance(user: self.user, usr: self.users[indexPath.section] )
         self.navigationController?.pushViewController(udvc, animated: true)
+    }
+}
+
+extension UIViewController {
+    @objc func refresh(){
+        
     }
 }

@@ -37,8 +37,6 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
             self.challengesTableView.addSubview(refreshControl)
         }
         self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        self.dataSource = self.challengesTableView.dataSource
-        self.delegate = self.challengesTableView.delegate
     }
     
     @objc func touchNew() {
@@ -51,7 +49,7 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    @objc func refresh() {
+    @objc override func refresh() {
         cws.getAllChallenges(token: self.user.token) { (challenges) in
             DispatchQueue.main.sync {
                 self.challenges = challenges
@@ -66,8 +64,6 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
         let cvc = ChallengesViewController()
         cvc.challenges = challenges
         cvc.user = user
-        cvc.dataSource = cvc
-        cvc.delegate = cvc
         return cvc
     }
     
@@ -88,7 +84,11 @@ class ChallengesViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.challengesTableView.dequeueReusableCell(withIdentifier: "ChallengeTableViewCell", for: indexPath) as! ChallengeTableViewCell
         let entry = self.challenges[indexPath.row]
-        cell.challNameLabel.text = entry.descriptions[0].title
+        if(!entry.descriptions.isEmpty){
+            cell.challNameLabel.text = entry.descriptions[0].title
+        } else {
+            cell.challNameLabel.text = "No challenge in database"
+        }
         return cell
     }
     

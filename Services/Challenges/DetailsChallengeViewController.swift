@@ -76,7 +76,7 @@ class DetailsChallengeViewController: UIViewController, UIPickerViewDelegate, UI
             self.countryCodes.append(descr.countryCode)
         }
         self.expTextField.text = String(self.challenge.experience)
-        setText(index: 0)
+        setText(index: self.index)
     }
     
     @objc func update() {

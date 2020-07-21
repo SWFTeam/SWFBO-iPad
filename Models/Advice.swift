@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Advice {
+class Advice: Codable {
     
     var id: Int
     var descriptions: [Description]

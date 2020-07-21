@@ -91,6 +91,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let uws = UserWebService()
             uws.getAllUsers(user: self.user) { (users) in
                 DispatchQueue.main.async {
+                    users.forEach { (user) in
+                        print(user.email, user.isAdmin)
+                    }
                     let usersView = UsersViewController.newInstance(user: self.user, users: users)
                     navController.viewControllers = [usersView]
                     self.showDetailViewController(navController, sender: self)

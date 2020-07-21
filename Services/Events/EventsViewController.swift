@@ -43,7 +43,7 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-    @objc func refresh() {
+    @objc override func refresh() {
         ews.getAllEvents(user: self.user) { (events) in
             DispatchQueue.main.sync {
                 self.events = events
@@ -82,7 +82,12 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.eventsTableView.dequeueReusableCell(withIdentifier: "EventTableViewCell", for: indexPath) as! EventTableViewCell
         let entry = self.events[indexPath.row]
-        cell.nameLabel.text = entry.descriptions[0].title
+        if entry.descriptions.count > 0 {
+            cell.nameLabel.text = entry.descriptions[0].title
+        } else {
+            cell.nameLabel.text = "No event in database"
+        }
+        
         return cell
     }
     

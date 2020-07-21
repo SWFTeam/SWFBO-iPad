@@ -37,11 +37,7 @@ class UserDetailsViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        if(self.usr.isAdmin){
-            self.navigationItem.title = "User details (admin)"
-        } else {
-            self.navigationItem.title = "User details"
-        }
+    
         self.updateButton.addTarget(self, action: #selector(updateAction), for: .touchUpInside)
         self.deleteButton.addTarget(self, action: #selector(deleteAction), for: .touchUpInside)
         self.setAdminButton.addTarget(self, action: #selector(setAdminAction), for: .touchUpInside)
@@ -53,7 +49,6 @@ class UserDetailsViewController: UIViewController {
     }
     
     @objc func updateAction() {
-        //self.usr.birthday = "31/12/1997"
         getNewValues()
         var usrResultCode = 0
         var addrResultCode = 0
@@ -76,6 +71,7 @@ class UserDetailsViewController: UIViewController {
         } else {
             self.showToast(message: "Error during update: " + String(usrResultCode), font: .systemFont(ofSize: 12.0))
         }
+        self.navigationController?.parent?.refresh()
     }
     
     @objc func deleteAction() {
@@ -98,7 +94,16 @@ class UserDetailsViewController: UIViewController {
     }
     
     @objc func setAdminAction() {
-        
+        self.usr.isAdmin = !self.usr.isAdmin
+        uws.updateUser(user: self.user, update_user: self.usr.id!) { (resultCode) in
+            DispatchQueue.main.sync {
+                if(self.usr.isAdmin == true){
+                    self.setAdminButton.setTitle("Unset admin", for: .normal)
+                } else {
+                    self.setAdminButton.setTitle("Set admin", for: .normal)
+                }
+            }
+        }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -123,9 +128,11 @@ class UserDetailsViewController: UIViewController {
     }
     
     func setDate() {
+        var date: Date!
         self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = removeTimeStamp(fromDate: dateFormatter.date(from: self.usr.birthday!)!)
-        self.birthdayPicker.date = date
+        date = dateFormatter.date(from: self.usr.birthday!)
+        date = removeTimeStamp(fromDate: date!)
+        self.birthdayPicker.date = date!
     }
     
     public func removeTimeStamp(fromDate: Date) -> Date {
@@ -136,7 +143,13 @@ class UserDetailsViewController: UIViewController {
     }
     
     func setText() {
+        if(self.usr.isAdmin){
+            self.navigationItem.title = "User details (admin)"
+        } else {
+            self.navigationItem.title = "User details"
+        }
         self.usernameLabel.text = self.usr.firstname! + " " + self.usr.lastname!
+        self.dateFormatter.dateFormat = "dd-MM-yyy - HH:mm:ss.SSSZ"
         self.lastLoginLabel.text = self.usr.last_login_at
         self.createdLabel.text = self.usr.created_at
         self.firstnameTextField.text = self.usr.firstname
@@ -154,7 +167,6 @@ class UserDetailsViewController: UIViewController {
         self.usr.firstname = self.firstnameTextField.text
         self.usr.lastname = self.lastnameTextField.text
         self.usr.email = self.emailTextField.text!
-        self.dateFormatter.dateFormat = "dd/MM/yyyy"
         self.usr.birthday = self.dateFormatter.string(from: self.birthdayPicker.date)
         self.usr.address.country = self.countryTextField.text!
         self.usr.address.city = self.cityTextField.text!

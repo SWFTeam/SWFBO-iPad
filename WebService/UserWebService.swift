@@ -188,4 +188,29 @@ class UserWebService: WebService {
         })
         task.resume()
     }
+    
+    func updateUser(user: User, update_user: Int,completion: @escaping(Int) -> Void ) -> Void {
+        guard let updateURL = URL(string: String(self.endpoint + "user")) else {
+            return
+        }
+        var resultCode = 0
+        var request = URLRequest(url: updateURL)
+        request.addValue(user.token, forHTTPHeaderField: "Authorization")
+        let jsonEncoder = JSONEncoder()
+            let jsonData = try? jsonEncoder.encode(["isAdmin": update_user])
+        request.httpBody = jsonData
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
+        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data: Data?, res, err) in
+            if let error = err {
+                print("error: \(error)")
+                return
+            }
+            if let httpRes = res as? HTTPURLResponse {
+                resultCode = httpRes.statusCode
+            }
+            completion(resultCode)
+        })
+        task.resume()
+    }
 }
